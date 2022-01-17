@@ -1,13 +1,18 @@
-.card{
+.main-content{
+    display: flex;
+    justify-content: center;
+}
+
+.align{
     display: flex;
     align-items: center;
     width: 80%;
     flex-wrap: wrap;
     justify-content: center;
-    
+    margin: 0;
 }
 
-.card-content{
+.card{
     width: 30%;
     min-width: 200px;
     min-height: 500px;
