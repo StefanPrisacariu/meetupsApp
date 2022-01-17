@@ -1,0 +1,19 @@
+.card{
+    display: flex;
+    align-items: center;
+    width: 80%;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+.card-content{
+    width: 30%;
+    min-width: 200px;
+    min-height: 500px;
+    background-color: #fff;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin:  3rem 20px;
+}

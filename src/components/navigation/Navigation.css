@@ -1,0 +1,18 @@
+nav {
+  background-color: rgb(185, 41, 41);
+  font-size: 20px;
+  color: white;
+  width: 100%;
+}
+
+ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+li{
+    display: block;
+    padding: 20px;
+    margin: 0 15px;
+}

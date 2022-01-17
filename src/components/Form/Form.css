@@ -1,0 +1,9 @@
+.bgd{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    background-color: #d9514a;
+    width: 100%;
+    min-height: 600px;
+    padding: 7rem;
+}
