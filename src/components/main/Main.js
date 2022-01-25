@@ -3,7 +3,6 @@ import "./Main.css";
 function Main() {
   return (
     <div className="main-content">
-      <div className="align">
         <div className="card">
           <div>Test</div>
         </div>
@@ -27,7 +26,6 @@ function Main() {
         <div className="card">
           <div>Test</div>
         </div>
-      </div>
     </div>
   );
 }

@@ -1,15 +1,9 @@
 .main-content{
     display: flex;
     justify-content: center;
-}
-
-.align{
-    display: flex;
-    align-items: center;
     width: 80%;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 0;
+    margin: 0 auto;
 }
 
 .card{
