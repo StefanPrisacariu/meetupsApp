@@ -5,14 +5,3 @@
     flex-wrap: wrap;
     margin: 0 auto;
 }
-
-.card{
-    width: 30%;
-    min-width: 200px;
-    min-height: 500px;
-    background-color: #fff;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    margin:  3rem 20px;
-}

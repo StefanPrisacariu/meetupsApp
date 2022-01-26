@@ -1,0 +1,23 @@
+.card{
+    width: 30%;
+    min-height: 500px;
+    background-color: #fff;
+    align-items: flex-start;
+    margin:  3rem 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card img{
+    width: 100%;
+    margin: 0px;
+}
+
+.card h2{
+    margin: 15px 10px;
+}
+
+.card p{
+    margin: 10px;
+}

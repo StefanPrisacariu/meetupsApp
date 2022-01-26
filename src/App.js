@@ -1,5 +1,5 @@
 import Carousel, { DUMMYCarouselData } from "./components/carousel/Carousel";
-import Form from "./components/Form/Form";
+import FormBase from "./components/Form/FormBase";
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import Navigation from "./components/navigation/Navigation";
@@ -11,7 +11,7 @@ function App() {
       <Navigation />
       <Carousel slides={DUMMYCarouselData} />
       <Main />
-      <Form />
+      <FormBase />
     </div>
   );
 }

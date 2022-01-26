@@ -1,9 +1,55 @@
 .bgd{
+    height: 500px;
+    background-color: tomato;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
-    margin-top: 5rem;
-    background-color: #d9514a;
+    align-items:center;
+}
+
+h2{
+    font-size: 40px;
+}
+
+form{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    font-size: 25px;
+    margin: 10px;
+}
+
+input{
+    height: 40px;
+    width: 80%;
+    margin: 10px;
+}
+
+.element{
     width: 100%;
-    min-height: 600px;
-    padding: 7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.element input{
+    font-size: 20px;
+}
+.element textarea{
+    font-size: 20px;
+}
+
+textarea{
+    height: 200px;
+    width: 80%;
+    margin: 10px;
+}
+
+button{
+    width: 5rem;
+    height: 3rem;
+    margin-top: 20px;
 }
