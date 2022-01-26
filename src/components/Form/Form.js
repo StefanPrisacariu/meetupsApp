@@ -40,7 +40,7 @@ function Form(props) {
 
         <div className="element">
           <label>Text</label>
-          <textarea className="text-area" type="text-area" rows='4' required ref={textInputRef}></textarea>
+          <textarea type="text-area" rows='4' required ref={textInputRef}></textarea>
         </div>
 
 
