@@ -1,62 +1,62 @@
-.carousel{
-    display: flex;
-    justify-content: center;
+.carousel {
+  display: flex;
+  justify-content: center;
 }
 
-.carousel-box{
-    display: flex;
-    background-color: white;
-    width: 70%;
-    height: 600px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    margin: 70px 0;
-    align-items: center;
+.carousel-box {
+  display: flex;
+  background-color: white;
+  width: 70%;
+  height: 600px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin: 70px 0;
+  align-items: center;
 }
 
-.carousel-box img{
-    height: 350px;
+.carousel-box img {
+  height: 350px;
 }
 
-.current-elements{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 30px;
+.current-elements {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 30px;
 }
 
-.current-elements h1{
-    font-size: 50px;
-    margin-left: 20px;
+.current-elements h1 {
+  font-size: 50px;
+  margin-left: 20px;
 }
 
-.current-elements p{
-    font-size: 20px;
-    margin-left: 20px;
+.current-elements p {
+  font-size: 20px;
+  margin-left: 20px;
 }
 
-.right-arrow{
-    position: absolute;
-    right: 10%;
-    z-index: 10;
-    cursor: pointer;
-    font-size: 60px;
-    color: black;
+.right-arrow {
+  position: absolute;
+  right: 10%;
+  z-index: 10;
+  cursor: pointer;
+  font-size: 60px;
+  color: black;
 }
 
-.left-arrow{
-    position: absolute;
-    left: 10%;
-    z-index: 10;
-    cursor: pointer;
-    font-size: 60px;
-    color: black;
+.left-arrow {
+  position: absolute;
+  left: 10%;
+  z-index: 10;
+  cursor: pointer;
+  font-size: 60px;
+  color: black;
 }
 
 .slide {
-    opacity: 0;
+  opacity: 0;
 }
 
 .slide.active {
-    opacity: 1;
+  opacity: 1;
 }
