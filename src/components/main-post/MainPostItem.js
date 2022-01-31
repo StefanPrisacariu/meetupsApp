@@ -1,8 +1,8 @@
 import Card from "../Card/Card";
-
 import "./MainPostItem.css";
 
 function MainPostItem(props) {
+
   return (
       <Card>
         <div className="image">

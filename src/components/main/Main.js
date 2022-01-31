@@ -1,48 +1,23 @@
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
+import PostsContext from "../../store/PostsContext";
 import MainPost from "../main-post/MainPost";
 
 import "./Main.css";
 
 function Main() {
-  // const [isLoading, setIsLoading] = useState(true);
-  const [loadedPosts, setLoadedPosts] = useState([]);
-
-
+  const postsContext = useContext(PostsContext);
   useEffect(() => {
-    // setIsLoading(true);
-    setTimeout(()=>{
-      fetch("https://cosplaybyheart-default-rtdb.firebaseio.com/posts.json")
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          const posts = [];
-          for (const key in data) {
-            const post = {
-              id: key,
-              ...data[key],
-            };
-            posts.push(post);
-          }
-          // setIsLoading(false);
-          setLoadedPosts(posts);
-        });
-    },1000)
-    
-  });
+  }, [postsContext]);
 
 
-  // if (isLoading) {
-  //   return (
-  //     <section>
-  //       <p>Loading...</p>
-  //     </section>
-  //   );
-  // }
+
 
   return (
     <div className="main-content">
-      <MainPost posts={loadedPosts} />
+      {postsContext.posts.length === 0 && (
+        <p>You got no posts yet. Start adding some.</p>
+      )}
+      {postsContext.posts.length > 0 && <MainPost posts={postsContext.posts} />}
     </div>
   );
 }
