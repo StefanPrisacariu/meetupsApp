@@ -27,10 +27,9 @@ function Form(props) {
       text: enteredText,
     };
     postsContext.addPost(postData);
-    //props.onAddPost(postData, resetInputField);
-   setTitleValue("");
-   setImageValue("");
-   setTextValue("");
+    setTitleValue("");
+    setImageValue("");
+    setTextValue("");
   }
 
   const handleUserInputTitle = (e) => {

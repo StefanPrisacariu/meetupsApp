@@ -21,3 +21,20 @@
 .card p{
     margin: 10px;
 }
+
+.delete{
+    z-index: 10;
+    display: flex;
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    position: absolute;
+    margin: 10px;
+    color: red;
+    cursor: pointer;
+}
+
+.delete:hover{
+    background-color: red;
+    color: white;
+}

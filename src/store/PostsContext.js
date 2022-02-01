@@ -1,9 +1,10 @@
-import { createContext, useState, useEffect} from "react";
+import { createContext, useState, useEffect } from "react";
 
 const PostsContext = createContext({
   posts: [],
   addPost: (newPost) => {},
-  itemIsPost: (postId) => {}
+  removePost: (postId) => {},
+  itemIsPost: (postId) => {},
 });
 
 export function PostsContextProvider(props) {
@@ -11,86 +12,60 @@ export function PostsContextProvider(props) {
 
   useEffect(() => {
     fetch("https://cosplaybyheart-default-rtdb.firebaseio.com/posts.json")
-    .then((response) => {
+      .then((response) => {
         return response.json();
-    })
-    .then((data) => {
+      })
+      .then((data) => {
         const posts = [];
         for (const key in data) {
-        const post = {
+          const post = {
             id: key,
             ...data[key],
-        };
-        posts.push(post);
+          };
+          posts.push(post);
         }
         setPosts(posts);
+      });
+  });
+
+  function addPostHandler(newPost) {
+    fetch("https://cosplaybyheart-default-rtdb.firebaseio.com/posts.json", {
+      method: "POST",
+      body: JSON.stringify(newPost),
+      headers: {
+        ContentType: "application/json",
+      },
+    }).then(() => {
+      alert("Post Created");
+      posts.push(newPost);
+      setPosts(posts);
     });
-  }, []);
-
- useEffect(() => {
-   fetch("https://cosplaybyheart-default-rtdb.firebaseio.com/posts.json")
-     .then((response) => {
-       return response.json();
-     })
-     .then((data) => {
-       const posts = [];
-       for (const key in data) {
-         const post = {
-           id: key,
-           ...data[key],
-         };
-         posts.push(post);
-       }
-       setPosts(posts);
-     });
- });
-
-   function addPostHandler(newPost) {
-     fetch("https://cosplaybyheart-default-rtdb.firebaseio.com/posts.json", {
-       method: "POST",
-       body: JSON.stringify(newPost),
-       headers: {
-         ContentType: "application/json",
-       },
-     }).then(() => {
-       alert("Post Created");
-        posts.push(newPost);
-        setPosts(posts);
-     });
-   };
-     
-
-//   const addPostHandler = useCallback(() => {
-//     fetch("https://cosplaybyheart-default-rtdb.firebaseio.com/posts.json", {
-//       method: "POST",
-//       body: JSON.stringify(newPost),
-//       headers: {
-//         ContentType: "application/json",
-//       },
-//     })
-//       .then(() => {
-//         alert("Post Created");
-//       })
-//   }, [newPost]);
-
-
-
-//   function addPostHandler(newPost){
-//       setPosts((e)=>{
-//           return e.concat(newPost);
-//       })
-//   }
-
-  function itemIsPostHandler(postId){
-      return posts.some(post => post.id === postId)
   }
 
+  function removePostHandler(postId) {
 
+
+    // fetch("https://cosplaybyheart-default-rtdb.firebaseio.com/posts.json", {
+    //   method: "DELETE",
+    //   body: JSON.stringify((posts) => posts.id === postId),
+    //   headers: {
+    //     ContentType: "application/json",
+    //   },
+    // }).then(() => {
+    //   posts.filter((posts) => posts.id === postId);
+    //   setPosts(posts);
+    // });
+  }
+
+  function itemIsPostHandler(postId) {
+    return posts.some((post) => post.id === postId);
+  }
 
   const context = {
     posts: posts,
     addPost: addPostHandler,
-    itemIsPost:itemIsPostHandler,
+    removePost: removePostHandler,
+    itemIsPost: itemIsPostHandler,
   };
 
   return (

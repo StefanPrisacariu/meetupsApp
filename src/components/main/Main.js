@@ -9,9 +9,6 @@ function Main() {
   useEffect(() => {
   }, [postsContext]);
 
-
-
-
   return (
     <div className="main-content">
       {postsContext.posts.length === 0 && (

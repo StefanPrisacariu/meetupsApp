@@ -2,6 +2,7 @@ import "./MainPost.css";
 import MainPostItem from "./MainPostItem";
 
 function MainPost(props) {
+
   return (
     <>
       {props.posts.map((post) => (
