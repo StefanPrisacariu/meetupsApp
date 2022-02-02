@@ -1,0 +1,17 @@
+.darkened{
+    display: flex;
+    overflow: none;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    z-index: 100;
+    background-color: rgba(56, 56, 56, 0.685);
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+}
+
+.hidden{
+    opacity: 0%;
+}

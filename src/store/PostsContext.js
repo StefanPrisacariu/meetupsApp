@@ -42,19 +42,21 @@ export function PostsContextProvider(props) {
     });
   }
 
+  function getPostById(postId){
+    const index = posts.findIndex(e=>e.id === postId)
+    return posts[index];
+  }
+
   function removePostHandler(postId) {
+    const toDelete = getPostById(postId);
+    console.log(toDelete)
 
-
-    // fetch("https://cosplaybyheart-default-rtdb.firebaseio.com/posts.json", {
-    //   method: "DELETE",
-    //   body: JSON.stringify((posts) => posts.id === postId),
-    //   headers: {
-    //     ContentType: "application/json",
-    //   },
-    // }).then(() => {
-    //   posts.filter((posts) => posts.id === postId);
-    //   setPosts(posts);
-    // });
+    fetch(
+      `https://cosplaybyheart-default-rtdb.firebaseio.com/posts/${postId}.json`,
+      {
+        method: "DELETE"
+      }
+    );
   }
 
   function itemIsPostHandler(postId) {
