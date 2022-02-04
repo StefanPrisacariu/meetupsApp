@@ -11,6 +11,18 @@ function MainPostItem(props) {
   return (
     <>
       <Card>
+          <button
+            className="delete"
+            onClick={
+              () =>
+                setHideOverlay(!hideOverlay) /*postsCtx.removePost(props.id)*/
+            }
+          >
+            <img
+              src="https://icons-for-free.com/iconfiles/png/512/trash+bin+icon-1320086460670911435.png"
+              alt=""
+            />
+          </button>
         <div className="image">
           <img src={props.image} alt={props.title} />
         </div>
@@ -20,17 +32,14 @@ function MainPostItem(props) {
         <div className="text">
           <p>{props.text}</p>
         </div>
-        <button
-          className="delete"
-          onClick={() => setHideOverlay(!hideOverlay) /*postsCtx.removePost(props.id)*/}
-        >
-          X
-        </button>
       </Card>
-      {
-        hideOverlay === false && 
-        <Overlay toggleOverlay={() => setHideOverlay(!hideOverlay)} elem={postsCtx} elemId={props.id}/>
-      }
+      {hideOverlay === false && (
+        <Overlay
+          toggleOverlay={() => setHideOverlay(!hideOverlay)}
+          elem={postsCtx}
+          elemId={props.id}
+        />
+      )}
     </>
   );
 }

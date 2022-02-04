@@ -1,10 +1,10 @@
 .card{
+    display: flex;
     width: 30%;
     min-height: 500px;
     background-color: #fff;
     align-items: flex-start;
     margin:  3rem 20px;
-    display: flex;
     flex-direction: column;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
@@ -25,16 +25,17 @@
 .delete{
     z-index: 10;
     display: flex;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     justify-content: center;
     position: absolute;
     margin: 10px;
-    color: red;
     cursor: pointer;
+    align-items: center;
 }
 
-.delete:hover{
-    background-color: red;
-    color: white;
+.delete img{
+    padding: 0;
+    width: 20px;
+    height: 20px;
 }
