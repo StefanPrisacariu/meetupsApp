@@ -1,4 +1,5 @@
 .card{
+    position: relative;
     display: flex;
     width: 30%;
     min-height: 500px;
@@ -29,6 +30,7 @@
     height: 30px;
     justify-content: center;
     position: absolute;
+    right: 0;
     margin: 10px;
     cursor: pointer;
     align-items: center;
