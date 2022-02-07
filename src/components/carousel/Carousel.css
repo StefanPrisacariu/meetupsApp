@@ -60,3 +60,23 @@
 .slide.active {
   opacity: 1;
 }
+
+
+@media only screen and (max-width: 1447px){
+    .current-elements{
+      display: flex;
+      flex-direction: column;
+    }
+
+    .carousel-box img{
+      height: 200px;
+      margin-top: 10px;
+    }
+
+    .left-arrow{
+      font-size: 20px;
+    }
+    .right-arrow{
+      font-size: 20px;
+    }
+}
