@@ -56,6 +56,7 @@ function Form(props) {
             ref={titleInputRef}
             value={titleValue}
             onChange={handleUserInputTitle}
+            placeholder="Title"
           ></input>
         </div>
 
@@ -67,6 +68,7 @@ function Form(props) {
             ref={imageInputRef}
             value={imageValue}
             onChange={handleUserInputImage}
+            placeholder="Image URL"
           ></input>
         </div>
 
@@ -79,9 +81,10 @@ function Form(props) {
             ref={textInputRef}
             value={textValue}
             onChange={handleUserInputText}
+            placeholder="Text"
           ></textarea>
         </div>
-        <div>
+        <div className="button-elem">
           <button>Submit</button>
         </div>
       </form>

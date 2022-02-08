@@ -82,8 +82,34 @@
 }
 
 @media only screen and (max-width: 600px){
+  .carousel-box{
+    width: 80%;
+  }
+  
   .carousel-box img{
     width: 100%;
     height: auto;
+  }
+
+  .current-elements{
+    margin: 15px;
+  }
+
+  .current-elements h1{
+    font-size: 30px;
+    margin: 10px 0;
+  }
+
+  .current-elements p{
+    margin-left: auto;
+  }
+
+  .right-arrow{
+    bottom: -15%;
+    right: 20%;
+  }
+  .left-arrow{
+    bottom: -15%;
+    left: 20%;
   }
 }
