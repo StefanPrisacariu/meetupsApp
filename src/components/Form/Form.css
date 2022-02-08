@@ -57,7 +57,7 @@ textarea::placeholder{
     color: transparent;
 }
 
-button{
+.form-button{
     width: 5rem;
     height: 3rem;
     margin-top: 20px;
@@ -108,8 +108,9 @@ button{
         justify-content: center;
     }
 
-    button{
+    .form-button{
         width: 80%;
-        font-size: 15px;
+        font-size: 20px;
+        background-color: rgb(206, 255, 133);
     }
 }

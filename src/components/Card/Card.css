@@ -36,6 +36,10 @@
     align-items: center;
 }
 
+.delete:hover{
+    background-color: tomato;
+}
+
 .delete img{
     padding: 0;
     width: 20px;

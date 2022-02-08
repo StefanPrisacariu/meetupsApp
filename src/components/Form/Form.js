@@ -85,7 +85,7 @@ function Form(props) {
           ></textarea>
         </div>
         <div className="button-elem">
-          <button>Submit</button>
+          <button className="form-button">Submit</button>
         </div>
       </form>
     </div>

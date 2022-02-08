@@ -4,19 +4,23 @@ import "./Navigation.css";
 function Navigation() {
   const [hideMenu, setHideMenu] = useState(true);
 
+  const handleToggle = () => {
+    setHideMenu(!hideMenu);
+  };
+
   return (
     <nav>
-      <button onClick={() => setHideMenu(!hideMenu)}>Menu</button>
+      <button className="nav-button" onClick={() => setHideMenu(!hideMenu)}>
+        Menu
+      </button>
 
-      {hideMenu === false && (
-        <ul toggleMenu={()=> setHideMenu(!hideMenu)}>
-          <li>Home</li>
-          <li>Page 1</li>
-          <li>Page 2</li>
-          <li>Page 3</li>
-          <li>Page 4</li>
-        </ul>
-      )}
+      <ul className={hideMenu ? "visible" : null}>
+        <li>Home</li>
+        <li>Page 1</li>
+        <li>Page 2</li>
+        <li>Page 3</li>
+        <li>Page 4</li>
+      </ul>
     </nav>
   );
 }
