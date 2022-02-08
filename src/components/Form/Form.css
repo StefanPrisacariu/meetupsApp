@@ -1,5 +1,5 @@
 .bgd{
-    height: 500px;
+    min-height: 500px;
     background-color: tomato;
     padding: 3rem;
     display: flex;
@@ -66,6 +66,10 @@ button{
 }
 
 @media only screen and (max-width: 1121px){
+    .element{
+        flex-direction: column;
+    }
+    
     .bgd{
         padding: 2rem 0.5rem;
         margin-top: 30px;
