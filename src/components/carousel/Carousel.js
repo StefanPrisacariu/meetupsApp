@@ -43,7 +43,6 @@ function Carousel({ slides }) {
   return (
     <div className="carousel">
       <div className="carousel-box">
-        <FaArrowCircleLeft className="left-arrow" onClick={prevSlide} />
         {DUMMYCarouselData.map((slide, index) => {
           return (
             <div
@@ -62,7 +61,10 @@ function Carousel({ slides }) {
             </div>
           );
         })}
+      <div className="carousel-buttons">
+        <FaArrowCircleLeft className="left-arrow" onClick={prevSlide} />
         <FaArrowCircleRight className="right-arrow" onClick={nextSlide} />
+      </div>
       </div>
     </div>
   );

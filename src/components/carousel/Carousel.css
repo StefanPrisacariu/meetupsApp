@@ -5,9 +5,10 @@
 
 .carousel-box {
   display: flex;
+  flex-direction: column;
   background-color: white;
   width: 70%;
-  min-height: 600px;
+  height: auto;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   margin: 70px 0;
@@ -35,12 +36,21 @@
   margin-left: 20px;
 }
 
+.carousel-buttons {
+  display: flex;
+  margin: 15px;
+  width: 100%;
+  justify-content: space-around;
+  font-size: 25px;
+}
+
+/* 
 .right-arrow {
   position: absolute;
   right: 10%;
   z-index: 10;
   cursor: pointer;
-  font-size: 60px;
+  font-size: px;
   color: black;
 }
 
@@ -49,9 +59,9 @@
   left: 10%;
   z-index: 10;
   cursor: pointer;
-  font-size: 60px;
+  font-size: 20px;
   color: black;
-}
+} */
 
 .slide {
   opacity: 0;
@@ -61,55 +71,38 @@
   opacity: 1;
 }
 
+@media only screen and (max-width: 1447px) {
+  .current-elements {
+    display: flex;
+    flex-direction: column;
+  }
 
-@media only screen and (max-width: 1447px){
-    .current-elements{
-      display: flex;
-      flex-direction: column;
-    }
-
-    .carousel-box img{
-      height: 200px;
-      margin-top: 10px;
-    }
-
-    .left-arrow{
-      font-size: 20px;
-    }
-    .right-arrow{
-      font-size: 20px;
-    }
+  .carousel-box img {
+    height: 200px;
+    margin-top: 10px;
+  }
 }
 
-@media only screen and (max-width: 600px){
-  .carousel-box{
+@media only screen and (max-width: 600px) {
+  .carousel-box {
     width: 80%;
   }
-  
-  .carousel-box img{
+
+  .carousel-box img {
     width: 100%;
     height: auto;
   }
 
-  .current-elements{
+  .current-elements {
     margin: 15px;
   }
 
-  .current-elements h1{
+  .current-elements h1 {
     font-size: 30px;
     margin: 10px 0;
   }
 
-  .current-elements p{
+  .current-elements p {
     margin-left: auto;
-  }
-
-  .right-arrow{
-    bottom: -15%;
-    right: 20%;
-  }
-  .left-arrow{
-    bottom: -15%;
-    left: 20%;
   }
 }
