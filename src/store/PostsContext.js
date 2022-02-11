@@ -78,7 +78,7 @@ export function PostsContextProvider(props) {
       <PostsContext.Provider value={context}>
         {props.children}
       </PostsContext.Provider>
-      {hideNotification && <PostNotification />}
+      {!hideNotification && <PostNotification />}
     </>
   );
 }

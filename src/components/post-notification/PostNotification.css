@@ -1,5 +1,5 @@
 .notification {
-  position: sticky;
+  position: fixed;
   display: flex;
   width: 168px;
   height: auto;
@@ -10,8 +10,8 @@
   border-style: solid;
   border-width: 3px;
   border-color: green;
-  bottom: 0;
-  left: 0;
+  bottom: 15px;
+  left: 50px;
 }
 
 .notification-check-icon {
