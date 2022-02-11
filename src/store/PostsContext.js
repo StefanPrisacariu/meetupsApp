@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import PostNotification from "../components/post-notification/PostNotification";
 
 const PostsContext = createContext({
   posts: [],
@@ -9,6 +10,7 @@ const PostsContext = createContext({
 
 export function PostsContextProvider(props) {
   const [posts, setPosts] = useState([]);
+  const [hideNotification, setHideNotification] = useState(true);
 
   useEffect(() => {
     fetch("https://cosplaybyheart-default-rtdb.firebaseio.com/posts.json")
@@ -35,26 +37,30 @@ export function PostsContextProvider(props) {
       headers: {
         ContentType: "application/json",
       },
-    }).then(() => {
-      alert("Post Created");
-      posts.push(newPost);
-      setPosts(posts);
-    });
+    })
+      .then(() => {
+        posts.push(newPost);
+        setPosts(posts);
+        setHideNotification(!hideNotification);
+      })
+      .then(() => {
+        setTimeout(() => setHideNotification(!hideNotification), 3000);
+      });
   }
 
-  function getPostById(postId){
-    const index = posts.findIndex(e=>e.id === postId)
+  function getPostById(postId) {
+    const index = posts.findIndex((e) => e.id === postId);
     return posts[index];
   }
 
   function removePostHandler(postId) {
     const toDelete = getPostById(postId);
-    console.log(toDelete)
+    console.log(toDelete);
 
     fetch(
       `https://cosplaybyheart-default-rtdb.firebaseio.com/posts/${postId}.json`,
       {
-        method: "DELETE"
+        method: "DELETE",
       }
     );
   }
@@ -71,9 +77,16 @@ export function PostsContextProvider(props) {
   };
 
   return (
-    <PostsContext.Provider value={context}>
-      {props.children}
-    </PostsContext.Provider>
+    <>
+      <PostsContext.Provider value={context}>
+        {props.children}
+      </PostsContext.Provider>
+      {hideNotification === false && (
+        <PostNotification
+          toggleNotification={() => setHideNotification(!hideNotification)}
+        />
+      )}
+    </>
   );
 }
 

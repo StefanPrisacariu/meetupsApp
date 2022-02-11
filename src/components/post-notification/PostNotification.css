@@ -1,0 +1,16 @@
+.notification{
+    position: absolute;
+    display: flex;
+    width: 250px;
+    height: 75px;
+    background-color: rgb(0, 119, 255);
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100%) translateX(30px);
+    border-radius: 10px;
+}
+
+.notification-text{
+    font-size: 40px;
+    color: white;
+}
