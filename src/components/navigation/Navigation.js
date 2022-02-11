@@ -12,12 +12,12 @@ function Navigation() {
     <nav>
       <button className="nav-button" onClick={() => setHideMenu(!hideMenu)}>
         <img
-          className={hideMenu ? null : "switch"}
-          src="https://i.imgur.com/1OX1Mqv.png"
+          className={hideMenu ? null : "switch"} //close-btn
+          src="https://i.imgur.com/rinHlJq.png"
           alt=""
         />
         <img
-          className={hideMenu ? "switch" : null}
+          className={hideMenu ? "switch" : null} //open-btn
           src="https://i.imgur.com/TglxYmD.png"
           alt=""
         />

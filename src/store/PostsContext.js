@@ -53,7 +53,6 @@ export function PostsContextProvider(props) {
 
   function removePostHandler(postId) {
     const toDelete = getPostById(postId);
-    console.log(toDelete);
 
     fetch(
       `https://cosplaybyheart-default-rtdb.firebaseio.com/posts/${postId}.json`,
