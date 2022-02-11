@@ -10,7 +10,8 @@ const PostsContext = createContext({
 
 export function PostsContextProvider(props) {
   const [posts, setPosts] = useState([]);
-  const [hideNotification, setHideNotification] = useState(true);
+  const [hideCreate, setHideCreate] = useState(true);
+  const [hideDelete, setHideDelete] = useState(true);
 
   useEffect(() => {
     fetch("https://cosplaybyheart-default-rtdb.firebaseio.com/posts.json")
@@ -40,8 +41,8 @@ export function PostsContextProvider(props) {
     }).then(() => {
       posts.push(newPost);
       setPosts(posts);
-      setHideNotification(false);
-      setTimeout(() => setHideNotification(true), 3000);
+      setHideCreate(false);
+      setTimeout(() => setHideCreate(true), 3000);
     });
   }
 
@@ -59,7 +60,10 @@ export function PostsContextProvider(props) {
       {
         method: "DELETE",
       }
-    );
+    ).then(() => {
+      setHideDelete(false);
+      setTimeout(() => setHideDelete(true), 3000);
+    });
   }
 
   function itemIsPostHandler(postId) {
@@ -78,7 +82,8 @@ export function PostsContextProvider(props) {
       <PostsContext.Provider value={context}>
         {props.children}
       </PostsContext.Provider>
-      {!hideNotification && <PostNotification />}
+      {!hideCreate && <PostNotification msg="Post Created" />}
+      {!hideDelete && <PostNotification msg="Post Deleted" />}
     </>
   );
 }
