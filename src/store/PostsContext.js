@@ -37,15 +37,12 @@ export function PostsContextProvider(props) {
       headers: {
         ContentType: "application/json",
       },
-    })
-      .then(() => {
+    }).then(() => {
         posts.push(newPost);
         setPosts(posts);
-        setHideNotification(!hideNotification);
+        setHideNotification(false);
+        setTimeout(() => setHideNotification(true), 3000);
       })
-      .then(() => {
-        setTimeout(() => setHideNotification(!hideNotification), 3000);
-      });
   }
 
   function getPostById(postId) {
@@ -81,9 +78,8 @@ export function PostsContextProvider(props) {
       <PostsContext.Provider value={context}>
         {props.children}
       </PostsContext.Provider>
-      {hideNotification === false && (
+      {!hideNotification && (
         <PostNotification
-          toggleNotification={() => setHideNotification(!hideNotification)}
         />
       )}
     </>
