@@ -31,20 +31,31 @@ li {
   }
 
   .nav-button {
-    display: unset;
+    display: flex;
     width: 100%;
     height: 80px;
     border: none;
     margin-top: 0;
     background-color: tomato;
     font-size: 25px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-button img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .switch {
+    display: none;
   }
 
   ul {
     display: none;
   }
 
-  .visible{
+  .visible {
     display: flex;
     flex-direction: column;
     padding: 0;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Navigation.css";
 
 function Navigation() {
-  const [hideMenu, setHideMenu] = useState(true);
+  const [hideMenu, setHideMenu] = useState(false);
 
   const handleToggle = () => {
     setHideMenu(!hideMenu);
@@ -11,7 +11,16 @@ function Navigation() {
   return (
     <nav>
       <button className="nav-button" onClick={() => setHideMenu(!hideMenu)}>
-        Menu
+        <img
+          className={hideMenu ? null : "switch"}
+          src="https://i.imgur.com/1OX1Mqv.png"
+          alt=""
+        />
+        <img
+          className={hideMenu ? "switch" : null}
+          src="https://i.imgur.com/TglxYmD.png"
+          alt=""
+        />
       </button>
 
       <ul className={hideMenu ? "visible" : null}>
