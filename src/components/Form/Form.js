@@ -6,7 +6,7 @@ import "./Form.css";
 function Form(props) {
   const postsContext = useContext(PostsContext);
 
-  const [hideTitleError, setHideTitleError] = useState(true);
+  const [titleError, setTitleError] = useState(false);
   // const [hideImageError, setHideImageError] = useState(true);
   // const [hideTextError, setHideTextError] = useState(true);
 
@@ -20,9 +20,9 @@ function Form(props) {
 
   const validateField = (e) => {
     if (e.target.value.length === 0) {
-      setHideTitleError(false);
+      setTitleError(true);
     } else {
-      setHideTitleError(true);
+      setTitleError(false);
     }
   };
 
@@ -32,7 +32,7 @@ function Form(props) {
     const enteredImage = imageInputRef.current.value;
     const enteredText = textInputRef.current.value;
 
-    if (hideTitleError === true) {
+    if (!titleError) {
       const postData = {
         title: enteredTitle,
         image: enteredImage,
@@ -63,7 +63,6 @@ function Form(props) {
       <h2>Add new Post</h2>
       <form onSubmit={submitHandler}>
         <div className="element">
-          {hideTitleError === false && <label>This field is Required</label>}
           <input
             type="text"
             ref={titleInputRef}
@@ -71,7 +70,8 @@ function Form(props) {
             onChange={handleUserInputTitle}
             onBlur={validateField}
             placeholder="Title"
-          ></input>
+          />
+          {titleError && <span>Title is required</span>}
         </div>
 
         <div className="element">
