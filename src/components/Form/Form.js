@@ -6,7 +6,9 @@ import "./Form.css";
 function Form(props) {
   const postsContext = useContext(PostsContext);
 
-  const [hideElement, setHideElement] = useState(true);
+  const [hideTitleError, setHideTitleError] = useState(true);
+  // const [hideImageError, setHideImageError] = useState(true);
+  // const [hideTextError, setHideTextError] = useState(true);
 
   const titleInputRef = useRef();
   const imageInputRef = useRef();
@@ -16,17 +18,21 @@ function Form(props) {
   const [imageValue, setImageValue] = useState("");
   const [textValue, setTextValue] = useState("");
 
+  const validateField = (e) => {
+    if (e.target.value.length === 0) {
+      setHideTitleError(false);
+    } else {
+      setHideTitleError(true);
+    }
+  };
+
   function submitHandler(event) {
     event.preventDefault();
-
     const enteredTitle = titleInputRef.current.value;
     const enteredImage = imageInputRef.current.value;
     const enteredText = textInputRef.current.value;
 
-    if (enteredTitle.length === 0) {
-      setHideElement(false);
-    } else {
-      setHideElement(true);
+    if (hideTitleError === true) {
       const postData = {
         title: enteredTitle,
         image: enteredImage,
@@ -36,6 +42,7 @@ function Form(props) {
       setTitleValue("");
       setImageValue("");
       setTextValue("");
+    } else {
     }
   }
 
@@ -56,16 +63,13 @@ function Form(props) {
       <h2>Add new Post</h2>
       <form onSubmit={submitHandler}>
         <div className="element">
-          {hideElement === false && (
-            <label toggleVisibility={() => setHideElement(!hideElement)}>
-              This field is Required
-            </label>
-          )}
+          {hideTitleError === false && <label>This field is Required</label>}
           <input
             type="text"
             ref={titleInputRef}
             value={titleValue}
             onChange={handleUserInputTitle}
+            onBlur={validateField}
             placeholder="Title"
           ></input>
         </div>
