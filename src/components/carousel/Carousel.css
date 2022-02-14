@@ -72,6 +72,10 @@
 }
 
 @media only screen and (max-width: 1447px) {
+  .carousel-box {
+    width: 80%;
+  }
+
   .current-elements {
     display: flex;
     flex-direction: column;
@@ -80,12 +84,6 @@
   .carousel-box img {
     height: 200px;
     margin-top: 10px;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .carousel-box {
-    width: 80%;
   }
 
   .carousel-box img {

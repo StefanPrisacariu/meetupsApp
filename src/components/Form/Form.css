@@ -29,15 +29,12 @@ input{
     margin: 10px;
 }
 
-input::placeholder{
-    color: transparent;
-}
-
 .element{
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
 }
 
 .element input{
@@ -45,16 +42,13 @@ input::placeholder{
 }
 .element textarea{
     font-size: 20px;
+    font-family: inherit;
 }
 
 textarea{
     height: 200px;
     width: 80%;
     margin: 10px;
-}
-
-textarea::placeholder{
-    color: transparent;
 }
 
 .form-button{
@@ -75,9 +69,6 @@ textarea::placeholder{
 }
 
 @media only screen and (max-width: 1121px){
-    .element{
-        flex-direction: column;
-    }
     
     .bgd{
         padding: 15px 0;
@@ -87,18 +78,6 @@ textarea::placeholder{
     form{
         width: 100%;
         align-items: center;
-    }
-
-    label{
-        display: none;
-    }
-
-    input::placeholder{
-        color: gray;
-    }
-    
-    textarea::placeholder{
-        color: gray;
     }
 
     .button-elem{

@@ -4,10 +4,6 @@ import "./Navigation.css";
 function Navigation() {
   const [hideMenu, setHideMenu] = useState(false);
 
-  const handleToggle = () => {
-    setHideMenu(!hideMenu);
-  };
-
   return (
     <nav>
       <button className="nav-button" onClick={() => setHideMenu(!hideMenu)}>

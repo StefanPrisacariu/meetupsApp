@@ -6,6 +6,8 @@ import "./Form.css";
 function Form(props) {
   const postsContext = useContext(PostsContext);
 
+  const [hideElement, setHideElement] = useState(true);
+
   const titleInputRef = useRef();
   const imageInputRef = useRef();
   const textInputRef = useRef();
@@ -21,15 +23,20 @@ function Form(props) {
     const enteredImage = imageInputRef.current.value;
     const enteredText = textInputRef.current.value;
 
-    const postData = {
-      title: enteredTitle,
-      image: enteredImage,
-      text: enteredText,
-    };
-    postsContext.addPost(postData);
-    setTitleValue("");
-    setImageValue("");
-    setTextValue("");
+    if (enteredTitle.length === 0) {
+      setHideElement(false);
+    } else {
+      setHideElement(true);
+      const postData = {
+        title: enteredTitle,
+        image: enteredImage,
+        text: enteredText,
+      };
+      postsContext.addPost(postData);
+      setTitleValue("");
+      setImageValue("");
+      setTextValue("");
+    }
   }
 
   const handleUserInputTitle = (e) => {
@@ -49,10 +56,13 @@ function Form(props) {
       <h2>Add new Post</h2>
       <form onSubmit={submitHandler}>
         <div className="element">
-          <label>Title</label>
+          {hideElement === false && (
+            <label toggleVisibility={() => setHideElement(!hideElement)}>
+              This field is Required
+            </label>
+          )}
           <input
             type="text"
-            required
             ref={titleInputRef}
             value={titleValue}
             onChange={handleUserInputTitle}
@@ -61,7 +71,7 @@ function Form(props) {
         </div>
 
         <div className="element">
-          <label>Image URL</label>
+          <label>This field is Required</label>
           <input
             type="text"
             required
@@ -73,7 +83,7 @@ function Form(props) {
         </div>
 
         <div className="element">
-          <label>Text</label>
+          <label>This field is Required</label>
           <textarea
             type="text-area"
             rows="4"
