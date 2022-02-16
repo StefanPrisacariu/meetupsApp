@@ -11,20 +11,27 @@ function MainPostItem(props) {
   return (
     <>
       <Card>
-          <button
-            className="delete"
-            onClick={
-              () =>
-                setHideOverlay(!hideOverlay) /*postsCtx.removePost(props.id)*/
-            }
-          >
-            <img
-              src="https://icons-for-free.com/iconfiles/png/512/trash+bin+icon-1320086460670911435.png"
-              alt=""
-            />
-          </button>
+        <button
+          className="delete"
+          onClick={
+            () => setHideOverlay(!hideOverlay) /*postsCtx.removePost(props.id)*/
+          }
+        >
+          <img
+            src="https://icons-for-free.com/iconfiles/png/512/trash+bin+icon-1320086460670911435.png"
+            alt=""
+          />
+        </button>
         <div className="image">
-          <img src={props.image} alt={props.title} />
+          <img
+            src={props.image}
+            alt="Image not Found"
+            onError={({ currentTarget }) => {
+              currentTarget.onerror = null; // prevents looping
+              currentTarget.src =
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Comic_image_missing.svg/1264px-Comic_image_missing.svg.png";
+            }}
+          />
         </div>
         <div className="title">
           <h2>{props.title}</h2>
