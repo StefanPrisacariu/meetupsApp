@@ -40,13 +40,28 @@ function Form(props) {
     }
   };
 
+  function checkFieldEmpty(inputRef, inputState) {
+    if (inputRef.current.value.length === 0) {
+      inputState(true);
+      return false;
+    } else {
+      inputState(false);
+      return true;
+    }
+  }
+
+
   function submitHandler(event) {
     event.preventDefault();
     const enteredTitle = titleInputRef.current.value;
     const enteredImage = imageInputRef.current.value;
     const enteredText = textInputRef.current.value;
 
-    if (!titleError && !imageError && !textError) {
+    const checkTitle = checkFieldEmpty(titleInputRef, setTitleError)
+    const checkImage = checkFieldEmpty(imageInputRef, setImageError)
+    const checkText = checkFieldEmpty(textInputRef, setTextError)
+
+    if (checkTitle && checkImage && checkText) {
       const postData = {
         title: enteredTitle,
         image: enteredImage,
@@ -57,6 +72,7 @@ function Form(props) {
       setImageValue("");
       setTextValue("");
     } else {
+
     }
   }
 
@@ -91,26 +107,26 @@ function Form(props) {
         <div className="element">
           <input
             type="text"
-            onBlur={validateImage}
             ref={imageInputRef}
             value={imageValue}
             onChange={handleUserInputImage}
+            onBlur={validateImage}
             placeholder="Image URL"
           ></input>
-          {imageError && <span>Title is required</span>}
+          {imageError && <span>Image URL is required</span>}
         </div>
 
         <div className="element">
           <textarea
             type="text-area"
             rows="4"
-            onBlur={validateText}
             ref={textInputRef}
             value={textValue}
             onChange={handleUserInputText}
+            onBlur={validateText}
             placeholder="Text"
           ></textarea>
-          {textError && <span>Title is required</span>}
+          {textError && <span>Text is required</span>}
         </div>
         <div className="button-elem">
           <button className="form-button">Submit</button>
