@@ -18,6 +18,8 @@ function Form(props) {
   const [imageValue, setImageValue] = useState("");
   const [textValue, setTextValue] = useState("");
 
+
+
   const validateTitle = (e) => {
     if (e.target.value.length === 0) {
       setTitleError(true);
@@ -38,7 +40,9 @@ function Form(props) {
     } else {
       setTextError(false);
     }
-  };
+  };//la astea tot nu am reusit sa fac ceva
+
+
 
   function checkFieldEmpty(inputRef, inputState) {
     if (inputRef.current.value.length === 0) {
@@ -73,6 +77,10 @@ function Form(props) {
     }
   }
 
+  const handleInput = (e) => {
+    e.target.handler(e.target.value); // asta e cumva incercarea mea de a face  handleUserInputurile universale (am pus asta initial in title la onChange si a crapat siteul)
+  }
+
   const handleUserInputTitle = (e) => {
     setTitleValue(e.target.value);
   };
@@ -84,6 +92,8 @@ function Form(props) {
   const handleUserInputText = (e) => {
     setTextValue(e.target.value);
   };
+
+
 
   return (
     <div className="bgd">
