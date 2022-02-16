@@ -50,16 +50,15 @@ function Form(props) {
     }
   }
 
-
   function submitHandler(event) {
     event.preventDefault();
     const enteredTitle = titleInputRef.current.value;
     const enteredImage = imageInputRef.current.value;
     const enteredText = textInputRef.current.value;
 
-    const checkTitle = checkFieldEmpty(titleInputRef, setTitleError)
-    const checkImage = checkFieldEmpty(imageInputRef, setImageError)
-    const checkText = checkFieldEmpty(textInputRef, setTextError)
+    const checkTitle = checkFieldEmpty(titleInputRef, setTitleError);
+    const checkImage = checkFieldEmpty(imageInputRef, setImageError);
+    const checkText = checkFieldEmpty(textInputRef, setTextError);
 
     if (checkTitle && checkImage && checkText) {
       const postData = {
@@ -71,8 +70,6 @@ function Form(props) {
       setTitleValue("");
       setImageValue("");
       setTextValue("");
-    } else {
-
     }
   }
 
@@ -97,6 +94,7 @@ function Form(props) {
             type="text"
             ref={titleInputRef}
             value={titleValue}
+            handler={setTitleValue}
             onChange={handleUserInputTitle}
             onBlur={validateTitle}
             placeholder="Title"
