@@ -7,8 +7,8 @@ function Form(props) {
   const postsContext = useContext(PostsContext);
 
   const [titleError, setTitleError] = useState(false);
-  // const [hideImageError, setHideImageError] = useState(true);
-  // const [hideTextError, setHideTextError] = useState(true);
+  const [imageError, setImageError] = useState(false);
+  const [textError, setTextError] = useState(false);
 
   const titleInputRef = useRef();
   const imageInputRef = useRef();
@@ -18,11 +18,25 @@ function Form(props) {
   const [imageValue, setImageValue] = useState("");
   const [textValue, setTextValue] = useState("");
 
-  const validateField = (e) => {
+  const validateTitle = (e) => {
     if (e.target.value.length === 0) {
       setTitleError(true);
     } else {
       setTitleError(false);
+    }
+  };
+  const validateImage = (e) => {
+    if (e.target.value.length === 0) {
+      setImageError(true);
+    } else {
+      setImageError(false);
+    }
+  };
+  const validateText = (e) => {
+    if (e.target.value.length === 0) {
+      setTextError(true);
+    } else {
+      setTextError(false);
     }
   };
 
@@ -32,7 +46,7 @@ function Form(props) {
     const enteredImage = imageInputRef.current.value;
     const enteredText = textInputRef.current.value;
 
-    if (!titleError) {
+    if (!titleError && !imageError && !textError) {
       const postData = {
         title: enteredTitle,
         image: enteredImage,
@@ -68,35 +82,35 @@ function Form(props) {
             ref={titleInputRef}
             value={titleValue}
             onChange={handleUserInputTitle}
-            onBlur={validateField}
+            onBlur={validateTitle}
             placeholder="Title"
           />
           {titleError && <span>Title is required</span>}
         </div>
 
         <div className="element">
-          <label>This field is Required</label>
           <input
             type="text"
-            required
+            onBlur={validateImage}
             ref={imageInputRef}
             value={imageValue}
             onChange={handleUserInputImage}
             placeholder="Image URL"
           ></input>
+          {imageError && <span>Title is required</span>}
         </div>
 
         <div className="element">
-          <label>This field is Required</label>
           <textarea
             type="text-area"
             rows="4"
-            required
+            onBlur={validateText}
             ref={textInputRef}
             value={textValue}
             onChange={handleUserInputText}
             placeholder="Text"
           ></textarea>
+          {textError && <span>Title is required</span>}
         </div>
         <div className="button-elem">
           <button className="form-button">Submit</button>
