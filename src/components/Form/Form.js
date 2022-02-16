@@ -6,94 +6,66 @@ import "./Form.css";
 function Form(props) {
   const postsContext = useContext(PostsContext);
 
-  const [titleError, setTitleError] = useState(false);
-  const [imageError, setImageError] = useState(false);
-  const [textError, setTextError] = useState(false);
+  const [{ title, image, text, titleError, imageError, textError }, setState] =
+    useState({
+      title: "",
+      image: "",
+      text: "",
+      titleError: "",
+      imageError: "",
+      textError: "",
+    });
 
   const titleInputRef = useRef();
   const imageInputRef = useRef();
   const textInputRef = useRef();
 
-  const [titleValue, setTitleValue] = useState("");
-  const [imageValue, setImageValue] = useState("");
-  const [textValue, setTextValue] = useState("");
-
-
-
-  const validateTitle = (e) => {
-    if (e.target.value.length === 0) {
-      setTitleError(true);
-    } else {
-      setTitleError(false);
-    }
-  };
-  const validateImage = (e) => {
-    if (e.target.value.length === 0) {
-      setImageError(true);
-    } else {
-      setImageError(false);
-    }
-  };
-  const validateText = (e) => {
-    if (e.target.value.length === 0) {
-      setTextError(true);
-    } else {
-      setTextError(false);
-    }
-  };//la astea tot nu am reusit sa fac ceva
-
-
-
-  function checkFieldEmpty(inputRef, inputState) {
-    if (inputRef.current.value.length === 0) {
-      inputState(true);
-      return false;
-    } else {
-      inputState(false);
-      return true;
+  function handleTextFieldBlur({ target: { name, value } }) {
+    if (value.length === 0) {
+      setState((prevState) => ({ ...prevState, [`${name}Error`]: prevState }));
     }
   }
+
+  function handleTextFieldChange({ target: { name, value } }) {
+    setState((prevState) => ({ ...prevState, [name]: value }));
+  }
+
+  // function checkAllFields(name) {
+  //   if (`${name}Enter`.value === "" || `${name}Enter`.value === null) {
+  //     setState({
+  //       [`${name}Error`]: true,
+  //     });
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // }
 
   function submitHandler(event) {
     event.preventDefault();
-    const enteredTitle = titleInputRef.current.value;
-    const enteredImage = imageInputRef.current.value;
-    const enteredText = textInputRef.current.value;
+    const titleEnter = titleInputRef.current.value;
+    const imageEnter = imageInputRef.current.value;
+    const textEnter = textInputRef.current.value;
 
-    const checkTitle = checkFieldEmpty(titleInputRef, setTitleError);
-    const checkImage = checkFieldEmpty(imageInputRef, setImageError);
-    const checkText = checkFieldEmpty(textInputRef, setTextError);
+    // if (checkAllFields(title)) {
+    //   console.log('SUCCES')
+    // } else{
+    //   console.log('FAIL')
+    // }
 
-    if (checkTitle && checkImage && checkText) {
-      const postData = {
-        title: enteredTitle,
-        image: enteredImage,
-        text: enteredText,
-      };
-      postsContext.addPost(postData);
-      setTitleValue("");
-      setImageValue("");
-      setTextValue("");
-    }
+    const postData = {
+      title: titleEnter,
+      image: imageEnter,
+      text: textEnter,
+    };
+
+    postsContext.addPost(postData);
+    setState({
+      title: "",
+      image: "",
+      text: "",
+    });
   }
-
-  const handleInput = (e) => {
-    e.target.handler(e.target.value); // asta e cumva incercarea mea de a face  handleUserInputurile universale (am pus asta initial in title la onChange si a crapat siteul)
-  }
-
-  const handleUserInputTitle = (e) => {
-    setTitleValue(e.target.value);
-  };
-
-  const handleUserInputImage = (e) => {
-    setImageValue(e.target.value);
-  };
-
-  const handleUserInputText = (e) => {
-    setTextValue(e.target.value);
-  };
-
-
 
   return (
     <div className="bgd">
@@ -103,10 +75,10 @@ function Form(props) {
           <input
             type="text"
             ref={titleInputRef}
-            value={titleValue}
-            handler={setTitleValue}
-            onChange={handleUserInputTitle}
-            onBlur={validateTitle}
+            value={title}
+            name="title"
+            onChange={handleTextFieldChange}
+            onBlur={handleTextFieldBlur}
             placeholder="Title"
           />
           {titleError && <span>Title is required</span>}
@@ -116,9 +88,10 @@ function Form(props) {
           <input
             type="text"
             ref={imageInputRef}
-            value={imageValue}
-            onChange={handleUserInputImage}
-            onBlur={validateImage}
+            value={image}
+            name="image"
+            onChange={handleTextFieldChange}
+            onBlur={handleTextFieldBlur}
             placeholder="Image URL"
           ></input>
           {imageError && <span>Image URL is required</span>}
@@ -129,9 +102,10 @@ function Form(props) {
             type="text-area"
             rows="4"
             ref={textInputRef}
-            value={textValue}
-            onChange={handleUserInputText}
-            onBlur={validateText}
+            value={text}
+            name="text"
+            onChange={handleTextFieldChange}
+            onBlur={handleTextFieldBlur}
             placeholder="Text"
           ></textarea>
           {textError && <span>Text is required</span>}
