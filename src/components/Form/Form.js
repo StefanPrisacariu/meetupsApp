@@ -30,16 +30,14 @@ function Form(props) {
     setState((prevState) => ({ ...prevState, [name]: value }));
   }
 
-  // function checkAllFields(name) {
-  //   if (`${name}Enter`.value === "" || `${name}Enter`.value === null) {
-  //     setState({
-  //       [`${name}Error`]: true,
-  //     });
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
+  function checkAllFields(variable) {
+    if (variable.value === "" || variable.value === null || variable.value === undefined) {
+      console.log(variable.value);
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   function submitHandler(event) {
     event.preventDefault();
@@ -47,11 +45,11 @@ function Form(props) {
     const imageEnter = imageInputRef.current.value;
     const textEnter = textInputRef.current.value;
 
-    // if (checkAllFields(title)) {
-    //   console.log('SUCCES')
-    // } else{
-    //   console.log('FAIL')
-    // }
+    if (checkAllFields(titleInputRef)) {
+      console.log('SUCCES')
+    } else{
+      console.log('FAIL')
+    }
 
     const postData = {
       title: titleEnter,
