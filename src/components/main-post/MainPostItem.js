@@ -10,7 +10,7 @@ function MainPostItem(props) {
 
   return (
     <>
-      <Card>
+      <Card key={props.id}>
         <button
           className="delete"
           onClick={

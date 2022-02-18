@@ -1,10 +1,12 @@
-import { useRef, useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import PostsContext from "../../store/PostsContext";
 
 import "./Form.css";
 
 function Form(props) {
   const postsContext = useContext(PostsContext);
+
+  const [count, setCount] = useState(0);
 
   const [{ title, image, text, titleError, imageError, textError }, setState] =
     useState({
@@ -15,14 +17,24 @@ function Form(props) {
       imageError: "",
       textError: "",
     });
+  const [validForm, setValidForm] = useState(false);
 
-  const titleInputRef = useRef();
-  const imageInputRef = useRef();
-  const textInputRef = useRef();
+  useEffect(() => {
+    if (title === "" && image === "" && text === "") {
+      setValidForm(false);
+    } else {
+      setValidForm(true);
+    }
+  }, [title, image, text]);
 
   function handleTextFieldBlur({ target: { name, value } }) {
     if (value.length === 0) {
-      setState((prevState) => ({ ...prevState, [`${name}Error`]: prevState }));
+      setState((prevState) => ({
+        ...prevState,
+        [`${name}Error`]: `${name} is required!`,
+      }));
+    } else {
+      setState((prevState) => ({ ...prevState, [`${name}Error`]: "" }));
     }
   }
 
@@ -30,39 +42,25 @@ function Form(props) {
     setState((prevState) => ({ ...prevState, [name]: value }));
   }
 
-  function checkAllFields(variable) {
-    if (variable.value === "" || variable.value === null || variable.value === undefined) {
-      console.log(variable.value);
-      return false;
-    } else {
-      return true;
-    }
-  }
-
   function submitHandler(event) {
     event.preventDefault();
-    const titleEnter = titleInputRef.current.value;
-    const imageEnter = imageInputRef.current.value;
-    const textEnter = textInputRef.current.value;
 
-    if (checkAllFields(titleInputRef)) {
-      console.log('SUCCES')
-    } else{
-      console.log('FAIL')
+    if (validForm) {
+      const postData = {
+        title: title,
+        image: image,
+        text: text,
+      };
+
+      postsContext.addPost(postData);
+      setState({
+        title: "",
+        image: "",
+        text: "",
+      });
+    } else {
+      alert("Invalid form");
     }
-
-    const postData = {
-      title: titleEnter,
-      image: imageEnter,
-      text: textEnter,
-    };
-
-    postsContext.addPost(postData);
-    setState({
-      title: "",
-      image: "",
-      text: "",
-    });
   }
 
   return (
@@ -72,7 +70,6 @@ function Form(props) {
         <div className="element">
           <input
             type="text"
-            ref={titleInputRef}
             value={title}
             name="title"
             onChange={handleTextFieldChange}
@@ -85,7 +82,6 @@ function Form(props) {
         <div className="element">
           <input
             type="text"
-            ref={imageInputRef}
             value={image}
             name="image"
             onChange={handleTextFieldChange}
@@ -99,7 +95,6 @@ function Form(props) {
           <textarea
             type="text-area"
             rows="4"
-            ref={textInputRef}
             value={text}
             name="text"
             onChange={handleTextFieldChange}
@@ -109,7 +104,8 @@ function Form(props) {
           {textError && <span>Text is required</span>}
         </div>
         <div className="button-elem">
-          <button className="form-button">Submit</button>
+          <button className="form-button" onClick={()=> setCount(count+1)}>Submit</button>
+          <span>You clicked {count} times (testing hooks)</span>
         </div>
       </form>
     </div>
