@@ -6,6 +6,7 @@ const PostsContext = createContext({
   addPost: (newPost) => {},
   removePost: (postId) => {},
   itemIsPost: (postId) => {},
+  editPost: (postId) => {},
 });
 
 export function PostsContextProvider(props) {
@@ -46,11 +47,6 @@ export function PostsContextProvider(props) {
     });
   }
 
-  // function getPostById(postId) {
-  //   const index = posts.findIndex((e) => e.id === postId);
-  //   return posts[index];
-  // }
-
   function removePostHandler(postId) {
 
     fetch(
@@ -68,11 +64,23 @@ export function PostsContextProvider(props) {
     return posts.some((post) => post.id === postId);
   }
 
+  function editPostHandler(postId){
+    fetch(
+      `https://cosplaybyheart-default-rtdb.firebaseio.com/posts/${postId}.json`,
+      {
+        method: "GET",
+      }
+    ).then((response) => {
+        return response.json();
+      }).then();
+  }
+
   const context = {
     posts: posts,
     addPost: addPostHandler,
     removePost: removePostHandler,
     itemIsPost: itemIsPostHandler,
+    editPost :editPostHandler,
   };
 
   return (

@@ -7,25 +7,32 @@ import Overlay from "../overlay/Overlay";
 function MainPostItem(props) {
   const postsCtx = useContext(PostsContext);
   const [hideOverlay, setHideOverlay] = useState(true);
+  const [hideEdit, setHideEdit] = useState(true);
 
   return (
     <>
       <Card key={props.id}>
-        <button
-          className="delete"
-          onClick={
-            () => setHideOverlay(!hideOverlay) /*postsCtx.removePost(props.id)*/
-          }
-        >
+        <button className="delete" onClick={() => setHideOverlay(!hideOverlay)}>
           <img
             src="https://icons-for-free.com/iconfiles/png/512/trash+bin+icon-1320086460670911435.png"
+            alt=""
+          />
+        </button>
+        <button
+          className="edit"
+          onClick={() => {
+            setHideEdit(!hideEdit);
+          }}
+        >
+          <img
+            src="https://icons-for-free.com/iconfiles/png/512/edit+document+edit+file+edited+editing+icon-1320191040211803620.png"
             alt=""
           />
         </button>
         <div className="image">
           <img
             src={props.image}
-            alt="Image not Found"
+            alt=""
             onError={({ currentTarget }) => {
               currentTarget.onerror = null; // prevents looping
               currentTarget.src =
@@ -45,6 +52,15 @@ function MainPostItem(props) {
           toggleOverlay={() => setHideOverlay(!hideOverlay)}
           elem={postsCtx}
           elemId={props.id}
+          action="delete"
+        />
+      )}
+      {hideEdit === false && (
+        <Overlay
+          toggleOverlay={() => setHideEdit(!hideEdit)}
+          elem={props}
+          elemId={props.id}
+          action="edit"
         />
       )}
     </>

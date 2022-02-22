@@ -1,61 +1,79 @@
-.card{
-    position: relative;
-    display: flex;
-    width: 30%;
-    min-height: 500px;
-    background-color: #fff;
-    align-items: flex-start;
-    margin:  10px 15px;
-    flex-direction: column;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+.card {
+  position: relative;
+  display: flex;
+  width: 30%;
+  min-height: 500px;
+  background-color: #fff;
+  align-items: flex-start;
+  margin: 10px 15px;
+  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.card img{
+.card img {
+  width: 100%;
+  margin: 0px;
+}
+
+.card h2 {
+  margin: 15px 10px;
+}
+
+.card p {
+  margin: 10px;
+}
+
+.delete {
+  z-index: 10;
+  display: flex;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  margin: 10px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.delete:hover {
+  background-color: tomato;
+}
+
+.delete img {
+  padding: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.edit {
+  z-index: 10;
+  display: flex;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  margin: 10px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.edit img {
+  padding: 0;
+  width: 20px;
+  height: 20px;
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1447px) {
+  .card {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .card {
     width: 100%;
-    margin: 0px;
+    margin: 10px 0;
+  }
 }
-
-.card h2{
-    margin: 15px 10px;
-}
-
-.card p{
-    margin: 10px;
-}
-
-.delete{
-    z-index: 10;
-    display: flex;
-    width: 30px;
-    height: 30px;
-    justify-content: center;
-    position: absolute;
-    right: 0;
-    margin: 10px;
-    cursor: pointer;
-    align-items: center;
-}
-
-.delete:hover{
-    background-color: tomato;
-}
-
-.delete img{
-    padding: 0;
-    width: 20px;
-    height: 20px;
-}
-
-@media only screen and (min-width: 900px) and (max-width: 1447px){
-    .card{
-        width: 40%;
-    }
-}
-
-@media only screen and (max-width: 900px){
-    .card{
-        width: 100%;
-        margin: 10px 0;
-    }
-}
-
