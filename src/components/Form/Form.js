@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import PostsContext from "../../store/PostsContext";
+import FormError from "../form-error/FormError";
 
 import "./Form.css";
 
@@ -17,10 +18,13 @@ function Form(props) {
       imageError: "",
       textError: "",
     });
+
+    const [hideErrorMsg, setHideErrorMsg] = useState(true);
+
   const [validForm, setValidForm] = useState(false);
 
   useEffect(() => {
-    if (title === "" && image === "" && text === "") {
+    if (title === "" || image === "" || text === "") {
       setValidForm(false);
     } else {
       setValidForm(true);
@@ -59,7 +63,8 @@ function Form(props) {
         text: "",
       });
     } else {
-      alert("Invalid form");
+      setHideErrorMsg(false);
+      setTimeout(() => setHideErrorMsg(true), 3000);
     }
   }
 
@@ -104,10 +109,13 @@ function Form(props) {
           {textError && <span>Text is required</span>}
         </div>
         <div className="button-elem">
-          <button className="form-button" onClick={()=> setCount(count+1)}>Submit</button>
-          <span>You clicked {count} times (testing hooks)</span>
+          <button className="form-button" onClick={() => setCount(count + 1)}>
+            Submit
+          </button>
         </div>
+        <span className="button-counter">You clicked {count} times</span>
       </form>
+      {!hideErrorMsg && <FormError msg="All fields are required" />}
     </div>
   );
 }

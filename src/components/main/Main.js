@@ -21,7 +21,7 @@ function Main() {
           <MainPost posts={postsContext.posts} />
         )}
       </div>
-      <div>There are {count} posts</div>
+      <div className="counter">There are {count} posts added</div>
     </>
   );
 }

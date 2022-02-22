@@ -46,13 +46,12 @@ export function PostsContextProvider(props) {
     });
   }
 
-  function getPostById(postId) {
-    const index = posts.findIndex((e) => e.id === postId);
-    return posts[index];
-  }
+  // function getPostById(postId) {
+  //   const index = posts.findIndex((e) => e.id === postId);
+  //   return posts[index];
+  // }
 
   function removePostHandler(postId) {
-    const toDelete = getPostById(postId);
 
     fetch(
       `https://cosplaybyheart-default-rtdb.firebaseio.com/posts/${postId}.json`,
