@@ -48,7 +48,6 @@ export function PostsContextProvider(props) {
   }
 
   function removePostHandler(postId) {
-
     fetch(
       `https://cosplaybyheart-default-rtdb.firebaseio.com/posts/${postId}.json`,
       {
@@ -64,15 +63,18 @@ export function PostsContextProvider(props) {
     return posts.some((post) => post.id === postId);
   }
 
-  function editPostHandler(postId){
+  function editPostHandler(postId, newPost) {
     fetch(
       `https://cosplaybyheart-default-rtdb.firebaseio.com/posts/${postId}.json`,
       {
         method: "GET",
+        headers: {
+          ContentType: "application/json",
+        },
       }
     ).then((response) => {
-        return response.json();
-      }).then();
+      return console.log(response.json());
+    }); // nu reusesc sa imi dau seama ce ar trebui sa scriu aici
   }
 
   const context = {
@@ -80,7 +82,7 @@ export function PostsContextProvider(props) {
     addPost: addPostHandler,
     removePost: removePostHandler,
     itemIsPost: itemIsPostHandler,
-    editPost :editPostHandler,
+    editPost: editPostHandler,
   };
 
   return (

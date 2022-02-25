@@ -1,7 +1,48 @@
+import { useState } from "react";
 import "./Overlay.css";
 
 function Overlay({ elem, elemId, toggleOverlay, action }) {
-  function editCurrentPost(event) {}
+  const [{ title, image, text }, setState] = useState({
+    title: "",
+    image: "",
+    text: "",
+  });
+
+  function handleTextFieldChange({ target: { name, value } }) {
+    setState((prevState) => ({ ...prevState, [name]: value }));
+  }
+
+  function editCurrentPost() {
+    const newTitle = title;
+    const newImage = image;
+    const newText = text;
+    const embed = {
+      title: newTitle,
+      image: newImage,
+      text: newText,
+    }; // adaug elementele noi in embed ca sa-l folosesc pt update
+
+    elem.editPost(elemId, embed);
+    // fetch(
+    //   `https://cosplaybyheart-default-rtdb.firebaseio.com/posts/${elem.id}.json`,
+    //   {
+    //     method: "GET",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   }
+    // ).then((response) => {
+    //   return response.json();
+    // }).then((data)=>{
+    //   const embed={
+    //     title: newTitle,
+    //     image: newImage,
+    //     text: newText,
+    //   }
+    //   data.map(embed);
+    // });
+    //astea nu aveau ce cauta aici, mi-am dat seama tarziu
+  }
 
   return (
     <>
@@ -40,16 +81,22 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
                 <input
                   className="editor-field"
                   defaultValue={elem.title}
+                  onChange={handleTextFieldChange}
+                  name="title"
                 ></input>
                 <label>Image URL</label>
                 <input
                   className="editor-field"
                   defaultValue={elem.image}
+                  onChange={handleTextFieldChange}
+                  name="image"
                 ></input>
                 <label>Text</label>
                 <textarea
                   className="editor-field"
                   defaultValue={elem.text}
+                  onChange={handleTextFieldChange}
+                  name="text"
                 ></textarea>
               </form>
               <div className="buttons">
