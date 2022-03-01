@@ -75,8 +75,6 @@ export function PostsContextProvider(props) {
       }
     ).then((response) => {
       response=editedPost;
-    }).then(()=>{
-      
     });
   }
 

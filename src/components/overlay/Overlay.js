@@ -1,15 +1,14 @@
-import { useState , useContext} from "react";
+import { useState, useContext } from "react";
 import "./Overlay.css";
 import PostsContext from "../../store/PostsContext";
 
 function Overlay({ elem, elemId, toggleOverlay, action }) {
-  
   const replaceContext = useContext(PostsContext);
-  
+
   const [{ title, image, text }, setState] = useState({
-    title: "",
-    image: "",
-    text: "",
+    title: elem.title,
+    image: elem.image,
+    text: elem.text,
   });
 
   function handleTextFieldChange({ target: { name, value } }) {
@@ -24,29 +23,9 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
       title: newTitle,
       image: newImage,
       text: newText,
-    }; // adaug elementele noi in embed ca sa-l folosesc pt update
+    };
 
-    replaceContext.editPost(embed,elemId)
-
-    // fetch(
-    //   `https://cosplaybyheart-default-rtdb.firebaseio.com/posts/${elem.id}.json`,
-    //   {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   }
-    // ).then((response) => {
-    //   return response.json();
-    // }).then((data)=>{
-    //   const embed={
-    //     title: newTitle,
-    //     image: newImage,
-    //     text: newText,
-    //   }
-    //   data.map(embed);
-    // });
-    //astea nu aveau ce cauta aici, mi-am dat seama tarziu
+    replaceContext.editPost(embed, elemId);
   }
 
   return (
