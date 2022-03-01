@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useState , useContext} from "react";
 import "./Overlay.css";
+import PostsContext from "../../store/PostsContext";
 
 function Overlay({ elem, elemId, toggleOverlay, action }) {
+  
+  const replaceContext = useContext(PostsContext);
+  
   const [{ title, image, text }, setState] = useState({
     title: "",
     image: "",
@@ -22,7 +26,8 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
       text: newText,
     }; // adaug elementele noi in embed ca sa-l folosesc pt update
 
-    elem.editPost(elemId, embed);
+    replaceContext.editPost(embed,elemId)
+
     // fetch(
     //   `https://cosplaybyheart-default-rtdb.firebaseio.com/posts/${elem.id}.json`,
     //   {

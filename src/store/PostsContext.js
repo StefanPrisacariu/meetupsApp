@@ -6,7 +6,7 @@ const PostsContext = createContext({
   addPost: (newPost) => {},
   removePost: (postId) => {},
   itemIsPost: (postId) => {},
-  editPost: (postId) => {},
+  editPost: (editedPost,postId) => {},
 });
 
 export function PostsContextProvider(props) {
@@ -63,18 +63,21 @@ export function PostsContextProvider(props) {
     return posts.some((post) => post.id === postId);
   }
 
-  function editPostHandler(postId, newPost) {
+  function editPostHandler(editedPost,postId) {
     fetch(
       `https://cosplaybyheart-default-rtdb.firebaseio.com/posts/${postId}.json`,
       {
-        method: "GET",
+        method: "PATCH",
+        body: JSON.stringify(editedPost),
         headers: {
           ContentType: "application/json",
         },
       }
     ).then((response) => {
-      return console.log(response.json());
-    }); // nu reusesc sa imi dau seama ce ar trebui sa scriu aici
+      response=editedPost;
+    }).then(()=>{
+      
+    });
   }
 
   const context = {
