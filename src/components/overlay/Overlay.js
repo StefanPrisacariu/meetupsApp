@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import "./Overlay.css";
 import PostsContext from "../../store/PostsContext";
 
-function Overlay({ elem, elemId, toggleOverlay, action }) {
+function Overlay({ elem, elemId, toggleOverlay, action, toggleNotification }) {
   const replaceContext = useContext(PostsContext);
 
   const [{ title, image, text }, setState] = useState({
@@ -25,8 +25,18 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
       text: newText,
     };
 
-    replaceContext.editPost(embed, elemId);
-    toggleOverlay(true);
+    replaceContext
+      .editPost(embed, elemId)
+      .then(()=>{
+        setTimeout(() => toggleNotification(true), 3000);
+      })
+      .then(() => {
+        toggleOverlay(true);
+        toggleNotification(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (

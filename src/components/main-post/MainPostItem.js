@@ -3,11 +3,13 @@ import PostsContext from "../../store/PostsContext";
 import Card from "../Card/Card";
 import "./MainPostItem.css";
 import Overlay from "../overlay/Overlay";
+import PostNotification from "../post-notification/PostNotification";
 
 function MainPostItem(props) {
   const postsCtx = useContext(PostsContext);
   const [hideOverlay, setHideOverlay] = useState(true);
   const [hideEdit, setHideEdit] = useState(true);
+  const [hideEditNotification, setHideEditNotification] = useState(true);
 
   return (
     <>
@@ -58,11 +60,13 @@ function MainPostItem(props) {
       {hideEdit === false && (
         <Overlay
           toggleOverlay={() => setHideEdit(!hideEdit)}
+          toggleNotification={() => setHideEditNotification(!hideEditNotification)}
           elem={props}
           elemId={props.id}
           action="edit"
         />
       )}
+      {!hideEditNotification && <PostNotification msg="Post Edited" />}
     </>
   );
 }
