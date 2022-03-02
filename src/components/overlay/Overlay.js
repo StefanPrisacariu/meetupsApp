@@ -27,11 +27,9 @@ function Overlay({ elem, elemId, toggleOverlay, action, toggleNotification }) {
 
     replaceContext
       .editPost(embed, elemId)
-      .then(()=>{
-        setTimeout(() => toggleNotification(true), 3000);
-      })
       .then(() => {
         toggleOverlay(true);
+        setTimeout(() => toggleNotification(true), 3000);
         toggleNotification(false);
       })
       .catch((error) => {
