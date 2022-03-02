@@ -26,6 +26,7 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
     };
 
     replaceContext.editPost(embed, elemId);
+    toggleOverlay(true);
   }
 
   return (

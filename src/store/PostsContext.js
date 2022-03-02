@@ -6,13 +6,14 @@ const PostsContext = createContext({
   addPost: (newPost) => {},
   removePost: (postId) => {},
   itemIsPost: (postId) => {},
-  editPost: (editedPost,postId) => {},
+  editPost: (editedPost, postId) => {},
 });
 
 export function PostsContextProvider(props) {
   const [posts, setPosts] = useState([]);
   const [hideCreate, setHideCreate] = useState(true);
   const [hideDelete, setHideDelete] = useState(true);
+  const [hideEdit, setHideEdit] = useState(true);
 
   useEffect(() => {
     fetch("https://cosplaybyheart-default-rtdb.firebaseio.com/posts.json")
@@ -63,7 +64,7 @@ export function PostsContextProvider(props) {
     return posts.some((post) => post.id === postId);
   }
 
-  function editPostHandler(editedPost,postId) {
+  function editPostHandler(editedPost, postId) {
     fetch(
       `https://cosplaybyheart-default-rtdb.firebaseio.com/posts/${postId}.json`,
       {
@@ -74,7 +75,10 @@ export function PostsContextProvider(props) {
         },
       }
     ).then((response) => {
-      response=editedPost;
+      response = editedPost;
+      setHideEdit(false);
+      setTimeout(() => setHideEdit(true), 3000);
+      return response;
     });
   }
 
@@ -93,6 +97,7 @@ export function PostsContextProvider(props) {
       </PostsContext.Provider>
       {!hideCreate && <PostNotification msg="Post Created" />}
       {!hideDelete && <PostNotification msg="Post Deleted" />}
+      {!hideEdit && <PostNotification msg="Post Edited" />}
     </>
   );
 }
