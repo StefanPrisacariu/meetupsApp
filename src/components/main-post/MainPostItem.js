@@ -10,52 +10,53 @@ function MainPostItem(props) {
   const [hideEdit, setHideEdit] = useState(true);
   const [hideButtons, setHideButtons] = useState(true);
 
-
   return (
     <>
-      <Card key={props.id}>
-        <div onMouseOver={()=>setHideButtons(false)} onMouseLeave={()=>setHideButtons(true)}>
-          {hideButtons === false && (
-            <>
-              <button
-                className="delete"
-                onClick={() => setHideOverlay(!hideOverlay)}
-              >
-                <img
-                  src="https://icons-for-free.com/iconfiles/png/512/trash+bin+icon-1320086460670911435.png"
-                  alt=""
-                />
-              </button>
-              <button
-                className="edit"
-                onClick={() => {
-                  setHideEdit(!hideEdit);
-                }}
-              >
-                <img
-                  src="https://icons-for-free.com/iconfiles/png/512/edit+document+edit+file+edited+editing+icon-1320191040211803620.png"
-                  alt=""
-                />
-              </button>
-            </>
-          )}
-          <div className="image">
-            <img
-              src={props.image}
-              alt=""
-              onError={({ currentTarget }) => {
-                currentTarget.onerror = null; // prevents looping
-                currentTarget.src =
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Comic_image_missing.svg/1264px-Comic_image_missing.svg.png";
+      <Card
+        key={props.id}
+        onMouseOver={() => setHideButtons(false)}
+        onMouseLeave={() => setHideButtons(true)}
+      >
+        {hideButtons === false && (
+          <>
+            <button
+              className="delete"
+              onClick={() => setHideOverlay(!hideOverlay)}
+            >
+              <img
+                src="https://icons-for-free.com/iconfiles/png/512/trash+bin+icon-1320086460670911435.png"
+                alt=""
+              />
+            </button>
+            <button
+              className="edit"
+              onClick={() => {
+                setHideEdit(!hideEdit);
               }}
-            />
-          </div>
-          <div className="title">
-            <h2>{props.title}</h2>
-          </div>
-          <div className="text">
-            <p>{props.text}</p>
-          </div>
+            >
+              <img
+                src="https://icons-for-free.com/iconfiles/png/512/edit+document+edit+file+edited+editing+icon-1320191040211803620.png"
+                alt=""
+              />
+            </button>
+          </>
+        )}
+        <div className="image">
+          <img
+            src={props.image}
+            alt=""
+            onError={({ currentTarget }) => {
+              currentTarget.onerror = null; // prevents looping
+              currentTarget.src =
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Comic_image_missing.svg/1264px-Comic_image_missing.svg.png";
+            }}
+          />
+        </div>
+        <div className="title">
+          <h2>{props.title}</h2>
+        </div>
+        <div className="text">
+          <p>{props.text}</p>
         </div>
       </Card>
       {hideOverlay === false && (
