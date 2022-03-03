@@ -13,6 +13,7 @@ export function PostsContextProvider(props) {
   const [posts, setPosts] = useState([]);
   const [hideCreate, setHideCreate] = useState(true);
   const [hideDelete, setHideDelete] = useState(true);
+  const [hideEdit, setHideEdit] = useState(true);
 
   useEffect(() => {
     fetch("https://cosplaybyheart-default-rtdb.firebaseio.com/posts.json")
@@ -73,7 +74,10 @@ export function PostsContextProvider(props) {
           ContentType: "application/json",
         },
       }
-    );
+    ).then(() => {
+      setHideEdit(false);
+      setTimeout(() => setHideEdit(true), 3000);
+    });
   }
 
   const context = {
@@ -91,6 +95,7 @@ export function PostsContextProvider(props) {
       </PostsContext.Provider>
       {!hideCreate && <PostNotification msg="Post Created" />}
       {!hideDelete && <PostNotification msg="Post Deleted" />}
+      {!hideEdit && <PostNotification msg="Post Edited" />}
     </>
   );
 }
