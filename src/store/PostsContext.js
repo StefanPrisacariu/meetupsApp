@@ -6,12 +6,15 @@ const PostsContext = createContext({
   removePost: (postId) => {},
   itemIsPost: (postId) => {},
   editPost: (editedPost, postId) => {},
+  state: "",
+  message: "",
 });
 
 export function PostsContextProvider(props) {
   const [posts, setPosts] = useState([]);
-
-
+  const [hideNotif, setHideNotif] = useState(true);
+  const [msg, setMsg] = useState('');
+  
   useEffect(() => {
     fetch("https://cosplaybyheart-default-rtdb.firebaseio.com/posts.json")
       .then((response) => {
@@ -40,6 +43,8 @@ export function PostsContextProvider(props) {
     }).then(() => {
       posts.push(newPost);
       setPosts(posts);
+      notificationStateHandler(false);
+      setMsg("Post Created");
     });
   }
 
@@ -49,7 +54,10 @@ export function PostsContextProvider(props) {
       {
         method: "DELETE",
       }
-    );
+    ).then(()=>{
+      notificationStateHandler(false);
+      setMsg("Post Deleted");
+    });
   }
 
   function itemIsPostHandler(postId) {
@@ -66,7 +74,15 @@ export function PostsContextProvider(props) {
           ContentType: "application/json",
         },
       }
-    );
+    ).then(()=>{
+      notificationStateHandler(false);
+      setMsg('Post Edited');
+    });
+  }
+
+  function notificationStateHandler(state) {
+    setHideNotif(state);
+    setTimeout(() => setHideNotif(!state), 3000);
   }
 
   const context = {
@@ -75,6 +91,8 @@ export function PostsContextProvider(props) {
     removePost: removePostHandler,
     itemIsPost: itemIsPostHandler,
     editPost: editPostHandler,
+    state: hideNotif,
+    message: msg,
   };
 
   return (
@@ -82,7 +100,6 @@ export function PostsContextProvider(props) {
       <PostsContext.Provider value={context}>
         {props.children}
       </PostsContext.Provider>
-
     </>
   );
 }

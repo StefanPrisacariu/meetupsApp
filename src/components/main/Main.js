@@ -12,13 +12,6 @@ function Main() {
   }, [postsContext]);
 
   const [count, setCount] = useState(0);
-  const [hideDelete, setHideDelete] = useState(true);
-  const [hideEdit, setHideEdit] = useState(true);
-
-  if (hideEdit === false || hideDelete === false) {
-    setTimeout(() => setHideDelete(true), 3000);
-    setTimeout(() => setHideEdit(true), 3000);
-  }
 
   return (
     <>
@@ -31,8 +24,7 @@ function Main() {
         )}
       </div>
       <div className="counter">There are {count} posts added</div>
-      {!hideDelete && <PostNotification msg="Post Deleted" />}
-      {!hideEdit && <PostNotification msg="Post Edited" />}
+      {postsContext.state === false && <PostNotification msg={postsContext.message}/>}
     </>
   );
 }

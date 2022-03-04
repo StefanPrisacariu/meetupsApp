@@ -1,13 +1,11 @@
 import { useState, useContext, useEffect } from "react";
 import PostsContext from "../../store/PostsContext";
-import PostNotification from "../post-notification/PostNotification";
 import FormError from "../form-error/FormError";
 
 import "./Form.css";
 
 function Form(props) {
   const postsContext = useContext(PostsContext);
-  const [hideCreate, setHideCreate] = useState(true);
   const [hideErrorMsg, setHideErrorMsg] = useState(true);
   const [validForm, setValidForm] = useState(false);
 
@@ -60,8 +58,6 @@ function Form(props) {
         image: "",
         text: "",
       });
-      setHideCreate(false);
-      setTimeout(() => setHideCreate(true), 3000);
     } else {
       setHideErrorMsg(false);
       setTimeout(() => setHideErrorMsg(true), 3000);
@@ -113,7 +109,6 @@ function Form(props) {
         </div>
       </form>
       {!hideErrorMsg && <FormError msg="All fields are required" />}
-      {!hideCreate && <PostNotification msg="Post Created" />}
     </div>
   );
 }
