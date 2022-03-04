@@ -1,13 +1,15 @@
 import { useState, useContext, useEffect } from "react";
 import PostsContext from "../../store/PostsContext";
+import PostNotification from "../post-notification/PostNotification";
 import FormError from "../form-error/FormError";
 
 import "./Form.css";
 
 function Form(props) {
   const postsContext = useContext(PostsContext);
-
-  const [count, setCount] = useState(0);
+  const [hideCreate, setHideCreate] = useState(true);
+  const [hideErrorMsg, setHideErrorMsg] = useState(true);
+  const [validForm, setValidForm] = useState(false);
 
   const [{ title, image, text, titleError, imageError, textError }, setState] =
     useState({
@@ -18,10 +20,6 @@ function Form(props) {
       imageError: "",
       textError: "",
     });
-
-    const [hideErrorMsg, setHideErrorMsg] = useState(true);
-
-  const [validForm, setValidForm] = useState(false);
 
   useEffect(() => {
     if (title === "" || image === "" || text === "") {
@@ -62,6 +60,8 @@ function Form(props) {
         image: "",
         text: "",
       });
+      setHideCreate(false);
+      setTimeout(() => setHideCreate(true), 3000);
     } else {
       setHideErrorMsg(false);
       setTimeout(() => setHideErrorMsg(true), 3000);
@@ -109,13 +109,11 @@ function Form(props) {
           {textError && <span>Text is required</span>}
         </div>
         <div className="button-elem">
-          <button className="form-button" onClick={() => setCount(count + 1)}>
-            Submit
-          </button>
+          <button className="form-button">Submit</button>
         </div>
-        <span className="button-counter">You clicked {count} times</span>
       </form>
       {!hideErrorMsg && <FormError msg="All fields are required" />}
+      {!hideCreate && <PostNotification msg="Post Created" />}
     </div>
   );
 }

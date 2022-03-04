@@ -13,6 +13,10 @@
     align-items: center;
 }
 
+.hidden{
+    visibility: hidden;
+}
+
 .check-box{
     z-index: 500;
     position: fixed;

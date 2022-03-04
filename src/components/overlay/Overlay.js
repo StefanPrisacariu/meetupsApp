@@ -48,7 +48,7 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
               <div className="buttons">
                 <button
                   className="delete-btn"
-                  onClick={() => elem.removePost(elemId)}
+                  onClick={() => {elem.removePost(elemId)}}
                 >
                   Delete
                 </button>
@@ -60,7 +60,7 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
           </div>
         </div>
       )}
-
+    
       {/* edit */}
       {action === "edit" && (
         <div className="darkened">

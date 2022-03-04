@@ -9,12 +9,15 @@ function MainPostItem(props) {
   const [hideOverlay, setHideOverlay] = useState(true);
   const [hideEdit, setHideEdit] = useState(true);
   const [hideButtons, setHideButtons] = useState(true);
-
+  
 
   return (
     <>
       <Card key={props.id}>
-        <div onMouseOver={()=>setHideButtons(false)} onMouseLeave={()=>setHideButtons(true)}>
+        <div
+          onMouseOver={() => setHideButtons(false)}
+          onMouseLeave={() => setHideButtons(true)}
+        >
           {hideButtons === false && (
             <>
               <button
@@ -44,7 +47,7 @@ function MainPostItem(props) {
               src={props.image}
               alt=""
               onError={({ currentTarget }) => {
-                currentTarget.onerror = null; // prevents looping
+                currentTarget.onerror = null;
                 currentTarget.src =
                   "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Comic_image_missing.svg/1264px-Comic_image_missing.svg.png";
               }}
