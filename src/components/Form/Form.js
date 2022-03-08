@@ -1,7 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import PostsContext from "../../store/PostsContext";
 import FormError from "../form-error/FormError";
-
 import "./Form.css";
 
 function Form(props) {
@@ -91,7 +90,6 @@ function Form(props) {
           ></input>
           {imageError && <span>Image URL is required</span>}
         </div>
-
         <div className="element">
           <textarea
             type="text-area"

@@ -3,11 +3,10 @@ nav {
   flex-direction: column;
   background-color: rgb(185, 41, 41);
   font-size: 20px;
-  color: white;
   width: 100%;
   align-items: center;
 }
-
+/* 
 .nav-button {
   display: none;
 }
@@ -60,4 +59,4 @@ li {
     flex-direction: column;
     padding: 0;
   }
-}
+} */

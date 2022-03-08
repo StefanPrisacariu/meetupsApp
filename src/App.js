@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Carousel, { DUMMYCarouselData } from "./components/carousel/Carousel";
 import FormBase from "./components/Form/FormBase";
 import Header from "./components/header/Header";
