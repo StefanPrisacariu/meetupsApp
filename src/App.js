@@ -1,4 +1,4 @@
-import Carousel, { DUMMYCarouselData } from "./components/carousel/Carousel";
+import ComponentCarousel from "./components/carousel/ComponentCarousel";
 import FormBase from "./components/Form/FormBase";
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
@@ -9,7 +9,7 @@ function App() {
     <div>
       <Header />
       <Navigation />
-      <Carousel slides={DUMMYCarouselData} />
+      <ComponentCarousel/>
       <Main />
       <FormBase />
     </div>

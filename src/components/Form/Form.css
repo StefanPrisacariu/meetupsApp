@@ -8,8 +8,9 @@
     margin-top: 30px;
 }
 
-h2{
+.form-title{
     font-size: 40px;
+    margin-bottom: 40px;
 }
 
 form{
@@ -18,90 +19,19 @@ form{
     flex-direction: column;
 }
 
-label{
-    font-size: 25px;
-    margin: 10px;
-}
-
-input{
-    height: 40px;
-    width: 100%;
-    margin: 10px;
-}
-
-.element{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-}
-
-.element input{
-    font-size: 20px;
-}
-.element textarea{
-    font-size: 20px;
-    font-family: inherit;
-}
-
-textarea{
+textarea.form-control{
+    resize: none;
     height: 200px;
-    width: 100%;
-    margin: 10px;
-}
-
-.form-button{
-    width: 5rem;
-    height: 3rem;
-    margin-top: 20px;
-}
-
-.button-counter{
-    margin-top: 10px;
 }
 
 @media only screen and (min-width: 1121px) and (max-width: 1505px){
-    .bgd{
-        padding: 3rem 1rem;
-        margin-top: 30px;
-    }
-
     form{
         width: 80%;
     }
 }
 
 @media only screen and (max-width: 1121px){
-    
-    .bgd{
-        padding: 15px 0;
-        margin-top: 30px;
-    }
-
     form{
         width: 100%;
-        align-items: center;
-    }
-
-    .button-elem{
-        display: flex;
-        width: 100%;
-        margin: 10px;
-        justify-content: center;
-    }
-
-    .form-button{
-        width: 80%;
-        font-size: 20px;
-        background-color: rgb(255, 203, 107);
-    }
-
-    input{
-        width: 80%;
-    }
-
-    textarea{
-        width: 80%;
     }
 }

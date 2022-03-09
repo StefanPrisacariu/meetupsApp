@@ -1,9 +1,9 @@
-import Form from "./Form";
+import FormComp from "./FormComp";
 
 function FormBase() {
   return (
     <section>
-      <Form />
+      <FormComp />
     </section>
   );
 }

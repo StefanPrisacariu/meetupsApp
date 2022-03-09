@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import PostsContext from "../../store/PostsContext";
-import Card from "../Card/Card";
+import { Card, Button } from "react-bootstrap";
 import "./MainPostItem.css";
 import Overlay from "../overlay/Overlay";
 
@@ -9,28 +9,31 @@ function MainPostItem(props) {
   const [hideOverlay, setHideOverlay] = useState(true);
   const [hideEdit, setHideEdit] = useState(true);
   const [hideButtons, setHideButtons] = useState(true);
-  
 
   return (
     <>
-      <Card key={props.id}>
-        <div
+      <Card>
+        <div className="card-width"
           onMouseOver={() => setHideButtons(false)}
           onMouseLeave={() => setHideButtons(true)}
         >
           {hideButtons === false && (
             <>
-              <button
+              <Button
                 className="delete"
+                variant="danger"
+                style={{ padding: 0 }}
                 onClick={() => setHideOverlay(!hideOverlay)}
               >
                 <img
                   src="https://icons-for-free.com/iconfiles/png/512/trash+bin+icon-1320086460670911435.png"
                   alt=""
                 />
-              </button>
-              <button
+              </Button>
+              <Button
                 className="edit"
+                variant="success"
+                style={{ padding: 0 }}
                 onClick={() => {
                   setHideEdit(!hideEdit);
                 }}
@@ -39,26 +42,24 @@ function MainPostItem(props) {
                   src="https://icons-for-free.com/iconfiles/png/512/edit+document+edit+file+edited+editing+icon-1320191040211803620.png"
                   alt=""
                 />
-              </button>
+              </Button>
             </>
           )}
-          <div className="image">
-            <img
+          <Card.Body style={{ padding: 0 }}>
+            <Card.Img
+              className="card-img"
               src={props.image}
+              variant="top"
               alt=""
               onError={({ currentTarget }) => {
                 currentTarget.onerror = null;
                 currentTarget.src =
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Comic_image_missing.svg/1264px-Comic_image_missing.svg.png";
+                  "https://upload.wikimedia.org/wikipedia/commons/7/75/No_image_available.png";
               }}
             />
-          </div>
-          <div className="title">
-            <h2>{props.title}</h2>
-          </div>
-          <div className="text">
-            <p>{props.text}</p>
-          </div>
+            <Card.Title>{props.title}</Card.Title>
+            <Card.Text className="mb-2 text-muted">{props.text}</Card.Text>
+          </Card.Body>
         </div>
       </Card>
       {hideOverlay === false && (

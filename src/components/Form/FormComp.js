@@ -1,9 +1,10 @@
 import { useState, useContext, useEffect } from "react";
+import { Form , Button} from "react-bootstrap";
 import PostsContext from "../../store/PostsContext";
 import FormError from "../form-error/FormError";
 import "./Form.css";
 
-function Form(props) {
+function FormComp() {
   const postsContext = useContext(PostsContext);
   const [hideErrorMsg, setHideErrorMsg] = useState(true);
   const [validForm, setValidForm] = useState(false);
@@ -65,50 +66,52 @@ function Form(props) {
 
   return (
     <div className="bgd">
-      <h2>Add new Post</h2>
-      <form onSubmit={submitHandler}>
-        <div className="element">
-          <input
+      <h2 className="form-title" >Add new Post</h2>
+      <Form onSubmit={submitHandler}>
+        <Form.Group className="mb-3" controlId="formGroupTitle">
+          <Form.Control
             type="text"
+            placeholder="Title"
             value={title}
             name="title"
             onChange={handleTextFieldChange}
             onBlur={handleTextFieldBlur}
-            placeholder="Title"
           />
           {titleError && <span>Title is required</span>}
-        </div>
+        </Form.Group>
 
-        <div className="element">
-          <input
+        <Form.Group className="mb-3" controlId="formGroupImage">
+          <Form.Control
             type="text"
+            placeholder="Image URL"
             value={image}
             name="image"
             onChange={handleTextFieldChange}
             onBlur={handleTextFieldBlur}
-            placeholder="Image URL"
-          ></input>
+          />
           {imageError && <span>Image URL is required</span>}
-        </div>
-        <div className="element">
-          <textarea
-            type="text-area"
-            rows="4"
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formGroupText">
+          <Form.Control
+            as="textarea"
+            placeholder="Text"
             value={text}
             name="text"
             onChange={handleTextFieldChange}
             onBlur={handleTextFieldBlur}
-            placeholder="Text"
-          ></textarea>
+            rows={4}
+          />
           {textError && <span>Text is required</span>}
-        </div>
-        <div className="button-elem">
-          <button className="form-button">Submit</button>
-        </div>
-      </form>
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
       {!hideErrorMsg && <FormError msg="All fields are required" />}
     </div>
+    
   );
 }
 
-export default Form;
+export default FormComp;

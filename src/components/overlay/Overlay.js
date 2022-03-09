@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { Button, Form } from "react-bootstrap";
 import "./Overlay.css";
 import PostsContext from "../../store/PostsContext";
 
@@ -26,9 +27,9 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
     };
 
     replaceContext
-    .editPost(embed, elemId)
-    .then(() => {
-      toggleOverlay(true);
+      .editPost(embed, elemId)
+      .then(() => {
+        toggleOverlay(true);
       })
       .catch((error) => {
         console.log(error);
@@ -46,57 +47,70 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
                 Are you sure you want to delete this post?
               </h2>
               <div className="buttons">
-                <button
-                  className="delete-btn"
-                  onClick={() => {elem.removePost(elemId)}}
+                <Button
+                  variant="outline-danger"
+                  onClick={() => {
+                    elem.removePost(elemId);
+                  }}
                 >
                   Delete
-                </button>
-                <button className="cancel-btn" onClick={toggleOverlay}>
+                </Button>
+                <Button variant="outline-primary" onClick={toggleOverlay}>
                   Cancel
-                </button>
+                </Button>
               </div>
             </div>
           </div>
         </div>
       )}
-    
+
       {/* edit */}
       {action === "edit" && (
         <div className="darkened">
           <div className="edit-box">
             <div className="container">
-              <form className="editor">
+              <Form className="editor">
                 <h2 className="editor-title">Edit Post</h2>
-                <label>Title</label>
-                <input
-                  className="editor-field"
-                  defaultValue={elem.title}
-                  onChange={handleTextFieldChange}
-                  name="title"
-                ></input>
-                <label>Image URL</label>
-                <input
-                  className="editor-field"
-                  defaultValue={elem.image}
-                  onChange={handleTextFieldChange}
-                  name="image"
-                ></input>
-                <label>Text</label>
-                <textarea
-                  className="editor-field"
-                  defaultValue={elem.text}
-                  onChange={handleTextFieldChange}
-                  name="text"
-                ></textarea>
-              </form>
+                <Form.Group className="mb-3" controlId="formGroupTitle">
+                  <Form.Label>Title</Form.Label>
+                  <Form.Control
+                    type="text"
+                    className="editor-field"
+                    defaultValue={elem.title}
+                    onChange={handleTextFieldChange}
+                    name="title"
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formGroupImageURL">
+                  <Form.Label>Title</Form.Label>
+                  <Form.Control
+                    type="text"
+                    className="editor-field"
+                    defaultValue={elem.image}
+                    onChange={handleTextFieldChange}
+                    name="image"
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formGroupText">
+                  <Form.Label>Title</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    className="editor-field"
+                    defaultValue={elem.text}
+                    onChange={handleTextFieldChange}
+                    name="text"
+                  />
+                </Form.Group>
+              </Form>
               <div className="buttons">
-                <button className="save-btn" onClick={editCurrentPost}>
-                  Save
-                </button>
-                <button className="cancel-btn" onClick={toggleOverlay}>
+                <Button variant="outline-success" onClick={editCurrentPost}>
+                  Save Changes
+                </Button>
+                <Button variant="outline-primary" onClick={toggleOverlay}>
                   Cancel
-                </button>
+                </Button>
               </div>
             </div>
           </div>

@@ -1,0 +1,78 @@
+.card {
+  position: relative;
+  display: flex;
+  width: 30%;
+  height: auto;
+  background-color: #fff;
+  align-items: flex-start;
+  margin: 10px 15px;
+  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 0;
+  font-size: 120%;
+}
+
+.card-width{
+  width: 100%;
+}
+
+.card-img {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  margin: 15px 10px;
+}
+
+.card-text {
+  margin: 10px;
+}
+
+.delete {
+  padding: 0;
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.delete img {
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  
+}
+
+.edit {
+  padding: 0;
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 0;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.edit img {
+  padding: 0;
+  width: 20px;
+  height: 20px;
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1447px) {
+  .card {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .card {
+    width: 100%;
+    margin: 10px 0;
+  }
+}

@@ -1,47 +1,33 @@
-// import { useState } from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav} from "react-bootstrap";
 import "./Navigation.css";
 
 function Navigation() {
-  // const [hideMenu, setHideMenu] = useState(false);
-
   return (
-    <Navbar className="nav">
-      <Nav>
-        <Nav.Link href="#home" className="text-light">
-          Home
-        </Nav.Link>
-        <Nav.Link href="#home" className="text-light">
-          Page 1
-        </Nav.Link>
-        <Nav.Link href="#home" className="text-light">
-          Page 2
-        </Nav.Link>
-      </Nav>
+    <Navbar className="navbar" collapseOnSelect expand="lg">
+      <Navbar.Brand href="#home" className="text-light" style={{fontSize:30}}>
+        CBH
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav>
+          <Nav.Link href="#home" className="text-light">
+            Home
+          </Nav.Link>
+          <Nav.Link href="#home" className="text-light">
+            Page 1
+          </Nav.Link>
+          <Nav.Link href="#home" className="text-light">
+            Page 2
+          </Nav.Link>
+          <Nav.Link href="#home" className="text-light">
+            Page 3
+          </Nav.Link>
+          <Nav.Link href="#home" className="text-light">
+            Page 4
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
-
-    // <nav>
-    //   <button className="nav-button" onClick={() => setHideMenu(!hideMenu)}>
-    //     <img
-    //       className={hideMenu ? null : "switch"} //close-btn
-    //       src="https://i.imgur.com/rinHlJq.png"
-    //       alt=""
-    //     />
-    //     <img
-    //       className={hideMenu ? "switch" : null} //open-btn
-    //       src="https://i.imgur.com/TglxYmD.png"
-    //       alt=""
-    //     />
-    //   </button>
-
-    //   <ul className={hideMenu ? "visible" : null}>
-    //     <li>Home</li>
-    //     <li>Page 1</li>
-    //     <li>Page 2</li>
-    //     <li>Page 3</li>
-    //     <li>Page 4</li>
-    //   </ul>
-    // </nav>
   );
 }
 
