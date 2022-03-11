@@ -1,15 +1,16 @@
 import { useState, useContext } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import "./Overlay.css";
 import PostsContext from "../../store/PostsContext";
 
 function Overlay({ elem, elemId, toggleOverlay, action }) {
   const replaceContext = useContext(PostsContext);
 
-  const [{ title, image, text }, setState] = useState({
+  const [{ title, image, text, location }, setState] = useState({
     title: elem.title,
     image: elem.image,
     text: elem.text,
+    location: elem.location,
   });
 
   function handleTextFieldChange({ target: { name, value } }) {
@@ -20,10 +21,12 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
     const newTitle = title;
     const newImage = image;
     const newText = text;
+    const newLocation = location;
     const embed = {
       title: newTitle,
       image: newImage,
       text: newText,
+      location: newLocation,
     };
 
     replaceContext
@@ -51,6 +54,7 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
                   variant="outline-danger"
                   onClick={() => {
                     elem.removePost(elemId);
+                    toggleOverlay();
                   }}
                 >
                   Delete
@@ -72,14 +76,31 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
               <Form className="editor">
                 <h2 className="editor-title">Edit Post</h2>
                 <Form.Group className="mb-3" controlId="formGroupTitle">
-                  <Form.Label>Title</Form.Label>
-                  <Form.Control
-                    type="text"
-                    className="editor-field"
-                    defaultValue={elem.title}
-                    onChange={handleTextFieldChange}
-                    name="title"
-                  />
+                  <Row>
+                    <Col>
+                      <Form.Label>Title</Form.Label>
+                      <Form.Control
+                        type="text"
+                        className="editor-field"
+                        defaultValue={elem.title}
+                        onChange={handleTextFieldChange}
+                        name="title"
+                      />
+                    </Col>
+                    <Col>
+                      <Form.Label>Location</Form.Label>
+                      <Form.Select
+                        as="location"
+                        aria-label="Select the location"
+                        name="location"
+                        onChange={handleTextFieldChange}
+                      >
+                        <option>---</option>
+                        <option value="carousel">Carousel</option>
+                        <option value="main">Main</option>
+                      </Form.Select>
+                    </Col>
+                  </Row>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGroupImageURL">

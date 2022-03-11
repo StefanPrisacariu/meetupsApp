@@ -6,7 +6,7 @@ function Navigation({toggleHome , togglePage1}) {
   return (
     <Navbar className="navbar" collapseOnSelect expand="lg">
       <Navbar.Brand href="/" className="text-light" style={{ fontSize: 30 }}>
-        CBH
+        PB
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">

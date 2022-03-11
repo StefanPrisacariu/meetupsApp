@@ -1,5 +1,4 @@
-import { useEffect, useContext } from "react";
-import { useState } from "react/cjs/react.development";
+import { useContext } from "react";
 import PostsContext from "../../store/PostsContext";
 import MainPost from "../main-post/MainPost";
 import PostNotification from "../post-notification/PostNotification";
