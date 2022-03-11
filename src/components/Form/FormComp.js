@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { Form , Button} from "react-bootstrap";
+import { Form, Button, Row, Col } from "react-bootstrap";
 import PostsContext from "../../store/PostsContext";
 import FormError from "../form-error/FormError";
 import "./Form.css";
@@ -9,23 +9,36 @@ function FormComp() {
   const [hideErrorMsg, setHideErrorMsg] = useState(true);
   const [validForm, setValidForm] = useState(false);
 
-  const [{ title, image, text, titleError, imageError, textError }, setState] =
-    useState({
-      title: "",
-      image: "",
-      text: "",
-      titleError: "",
-      imageError: "",
-      textError: "",
-    });
+  const [
+    {
+      title,
+      image,
+      text,
+      location,
+      titleError,
+      imageError,
+      textError,
+      locationError,
+    },
+    setState,
+  ] = useState({
+    title: "",
+    image: "",
+    text: "",
+    location: "",
+    titleError: "",
+    imageError: "",
+    textError: "",
+    locationError: "",
+  });
 
   useEffect(() => {
-    if (title === "" || image === "" || text === "") {
+    if (title === "" || image === "" || text === "" || location === "") {
       setValidForm(false);
     } else {
       setValidForm(true);
     }
-  }, [title, image, text]);
+  }, [title, image, text, location]);
 
   function handleTextFieldBlur({ target: { name, value } }) {
     if (value.length === 0) {
@@ -50,6 +63,7 @@ function FormComp() {
         title: title,
         image: image,
         text: text,
+        location: location,
       };
 
       postsContext.addPost(postData);
@@ -57,6 +71,7 @@ function FormComp() {
         title: "",
         image: "",
         text: "",
+        location: "",
       });
     } else {
       setHideErrorMsg(false);
@@ -66,18 +81,36 @@ function FormComp() {
 
   return (
     <div className="bgd">
-      <h2 className="form-title" >Add new Post</h2>
+      <h2 className="form-title">Add new Post</h2>
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="formGroupTitle">
-          <Form.Control
-            type="text"
-            placeholder="Title"
-            value={title}
-            name="title"
-            onChange={handleTextFieldChange}
-            onBlur={handleTextFieldBlur}
-          />
-          {titleError && <span>Title is required</span>}
+          <Row>
+            <Col>
+              <Form.Control
+                type="text"
+                placeholder="Title"
+                value={title}
+                name="title"
+                onChange={handleTextFieldChange}
+                onBlur={handleTextFieldBlur}
+              />
+              {titleError && <span>Title is required</span>}
+            </Col>
+            <Col xs={3}>
+              <Form.Select
+                as="location"
+                aria-label="Select the location"
+                name="location"
+                onChange={handleTextFieldChange}
+                onBlur={handleTextFieldBlur}
+              >
+                <option value="">Select the location</option>
+                <option value="carousel">Carousel</option>
+                <option value="main">Main</option>
+              </Form.Select>
+              {locationError && <span>Select a location</span>}
+            </Col>
+          </Row>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formGroupImage">
@@ -110,7 +143,6 @@ function FormComp() {
       </Form>
       {!hideErrorMsg && <FormError msg="All fields are required" />}
     </div>
-    
   );
 }
 

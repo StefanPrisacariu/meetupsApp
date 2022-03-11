@@ -7,11 +7,6 @@ import "./Main.css";
 
 function Main() {
   const postsContext = useContext(PostsContext);
-  useEffect(() => {
-    setCount(postsContext.posts.length);
-  }, [postsContext]);
-
-  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -23,8 +18,9 @@ function Main() {
           <MainPost posts={postsContext.posts} />
         )}
       </div>
-      <div className="counter">There are {count} posts added</div>
-      {postsContext.state === false && <PostNotification msg={postsContext.message}/>}
+      {postsContext.state === false && (
+        <PostNotification msg={postsContext.message} />
+      )}
     </>
   );
 }

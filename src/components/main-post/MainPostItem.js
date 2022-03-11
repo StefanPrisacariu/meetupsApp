@@ -13,7 +13,8 @@ function MainPostItem(props) {
   return (
     <>
       <Card>
-        <div className="card-width"
+        <div
+          className="card-width"
           onMouseOver={() => setHideButtons(false)}
           onMouseLeave={() => setHideButtons(true)}
         >
