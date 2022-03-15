@@ -39,6 +39,16 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
       });
   }
 
+  const outsideCLick = document.querySelector('.container');
+
+  document.addEventListener('mousedown',(e) => {
+    if (outsideCLick.contains(e.target)){
+      
+    } else {
+      toggleOverlay();
+    }
+  })
+
   return (
     <>
       {/* delete */}
@@ -95,9 +105,21 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
                         name="location"
                         onChange={handleTextFieldChange}
                       >
-                        <option>---</option>
-                        <option value="carousel">Carousel</option>
-                        <option value="main">Main</option>
+                        {elem.location === "carousel" ? (
+                          <>
+                            <option selected value="carousel">
+                              Carousel
+                            </option>
+                            <option value="main">Main</option>
+                          </>
+                        ) : (
+                          <>
+                            <option value="carousel">Carousel</option>
+                            <option selected value="main">
+                              Main
+                            </option>
+                          </>
+                        )}
                       </Form.Select>
                     </Col>
                   </Row>
