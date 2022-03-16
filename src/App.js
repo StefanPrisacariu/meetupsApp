@@ -1,28 +1,20 @@
-import { Route, Routes } from "react-router-dom";
-import ComponentCarousel from "./components/carousel/ComponentCarousel";
-import FormBase from "./components/Form/FormBase";
 import Header from "./components/header/Header";
-import Main from "./components/main/Main";
 import Navigation from "./components/navigation/Navigation";
 import Home from "./pages/Home";
-import Layout from "./pages/Layout";
+import Page1 from "./pages/Page1";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <Layout>
-      {/* <Routes>
-        <Route path='/' element={<Home />} />
-      </Routes> */}
-    </Layout>
-
-
-    // <div>
-    //   <Header />
-    //   <Navigation />
-    //   <ComponentCarousel/>
-    //   <Main />
-    //   <FormBase />
-    // </div>
+    <>
+      <Header />
+      <Navigation>
+        <Routes>
+          <Route path="/" element={<Home/>}></Route>
+          <Route path="/page1" element={<Page1/>}></Route>
+        </Routes>
+      </Navigation>
+    </>
   );
 }
 

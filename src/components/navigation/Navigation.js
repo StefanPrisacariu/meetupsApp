@@ -1,39 +1,43 @@
 import { Navbar, Nav } from "react-bootstrap";
-// import { Link } from "react-router-dom";
+import { BrowserRouter as Router ,Link } from "react-router-dom";
 import "./Navigation.css";
 
-function Navigation({toggleHome , togglePage1}) {
+function Navigation(props) {
   return (
-    <Navbar className="navbar" collapseOnSelect expand="lg">
-      <Navbar.Brand href="/" className="text-light" style={{ fontSize: 30 }}>
-        PB
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav>
-          <Nav.Link className="text-light" onClick={toggleHome}>
-            Home
-          </Nav.Link>
-          <Nav.Link className="text-light" onClick={togglePage1}>
-            Page 1
-          </Nav.Link>
-
-          {/* <Nav.Link as={Link} to={'/'} className="text-light">
-            Home
-          </Nav.Link> */}
-
-          <Nav.Link href="/page2" className="text-light">
-            Page 2-Inactive
-          </Nav.Link>
-          <Nav.Link href="/page3" className="text-light">
-            Page 3-Inactive
-          </Nav.Link>
-          <Nav.Link href="/page4" className="text-light">
-            Page 4-Inactive
-          </Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+    <Router>
+      <div>
+        <Navbar className="navbar" collapseOnSelect expand="lg">
+          <Navbar.Brand
+            href="/"
+            className="text-light"
+            style={{ fontSize: 30 }}
+          >
+            PB
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav>
+              <Nav.Link as={Link} to={"/"} className="text-light">
+                Home
+              </Nav.Link>
+              <Nav.Link as={Link} to={"/page1"} className="text-light">
+                Page 1
+              </Nav.Link>
+              <Nav.Link href="/page2" disabled className="text-light">
+                Page 2
+              </Nav.Link>
+              <Nav.Link href="/page3" disabled className="text-light">
+                Page 3
+              </Nav.Link>
+              <Nav.Link href="/page4" disabled className="text-light">
+                Page 4
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      </div>
+      {props.children}
+    </Router>
   );
 }
 
