@@ -4,8 +4,13 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   ro: {
     translation: {
+      //HEADER
       "header-title": "Blog Personal",
+      "header-language": "Selectează Limba",
+      "header-language-ro": "  Română",
+      "header-language-en": "  Engleză",
 
+      //NAVIGATION
       "nav-brand": "BP",
       "nav-home": "Acasă",
       "nav-page-1": "Pagina 1",
@@ -13,6 +18,7 @@ const resources = {
       "nav-page-3": "Pagina 3",
       "nav-page-4": "Pagina 4",
 
+      //FORM
       "form-title": "Adaugă o nouă postare",
       "form-field-title": "Titlu",
       "form-field-location": "Selectează Locația",
@@ -28,10 +34,12 @@ const resources = {
       "form-error-text": "Textul este obligatoriu",
       "form-alert-error": "Toate câmpurile sunt obligatorii",
 
+      //ALERT-BOX
       "alert-create": "Postare Creată",
       "alert-delete": "Postare Ștearsă",
       "alert-edit": "Postare Modificată",
 
+      //OVERLAY
       "overlay-delete-title": "Ești sigur că vrei să ștergi această postare?",
       "overlay-delete-yes": "Șterge",
       "overlay-delete-no": "Anulare",
@@ -43,8 +51,13 @@ const resources = {
   },
   en: {
     translation: {
+      //HEADER
       "header-title": "Personal Blog",
+      "header-language": "Select the Language",
+      "header-language-ro": "  Romanian",
+      "header-language-en": "  English",
 
+      //NAVIGATION
       "nav-brand": "PB",
       "nav-home": "Home",
       "nav-page-1": "Page 1",
@@ -52,6 +65,7 @@ const resources = {
       "nav-page-3": "Page 3",
       "nav-page-4": "Page 4",
 
+      //FORM
       "form-title": "Add a new post",
       "form-field-title": "Title",
       "form-field-location": "Select the Location",
@@ -67,10 +81,12 @@ const resources = {
       "form-error-text": "Text is required",
       "form-alert-error": "All fields are required",
 
+      //ALERT-BOX
       "alert-create": "Post Created",
       "alert-delete": "Post Deleted",
       "alert-edit": "Post Edited",
 
+      //OVERLAY
       "overlay-delete-title": "Are you sure you want to delete this post?",
       "overlay-delete-yes": "Delete",
       "overlay-delete-no": "Cancel",
