@@ -1,8 +1,12 @@
 import { Navbar, Nav } from "react-bootstrap";
 import { BrowserRouter as Router ,Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import "./Navigation.css";
 
 function Navigation(props) {
+
+  const { t, i18n } = useTranslation();
+
   return (
     <Router>
       <div>
@@ -12,25 +16,25 @@ function Navigation(props) {
             className="text-light"
             style={{ fontSize: 30 }}
           >
-            PB
+            {t("nav-brand")}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav>
               <Nav.Link as={Link} to={"/"} className="text-light">
-                Home
+                {t("nav-home")}
               </Nav.Link>
               <Nav.Link as={Link} to={"/page1"} className="text-light">
-                Page 1
+                {t('nav-page-1')}
               </Nav.Link>
               <Nav.Link href="/page2" disabled className="text-light">
-                Page 2
+                {t('nav-page-2')}
               </Nav.Link>
               <Nav.Link href="/page3" disabled className="text-light">
-                Page 3
+                {t('nav-page-3')}
               </Nav.Link>
               <Nav.Link href="/page4" disabled className="text-light">
-                Page 4
+                {t('nav-page-4')}
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const PostsContext = createContext({
   posts: [],
@@ -13,8 +14,9 @@ const PostsContext = createContext({
 export function PostsContextProvider(props) {
   const [posts, setPosts] = useState([]);
   const [hideNotif, setHideNotif] = useState(true);
-  const [msg, setMsg] = useState('');
-  
+  const [msg, setMsg] = useState("");
+  const { t, i18n } = useTranslation();
+
   useEffect(() => {
     fetch("https://cosplaybyheart-default-rtdb.firebaseio.com/posts.json")
       .then((response) => {
@@ -44,7 +46,7 @@ export function PostsContextProvider(props) {
       posts.push(newPost);
       setPosts(posts);
       notificationStateHandler(false);
-      setMsg("Post Created");
+      setMsg(t("alert-create"));
     });
   }
 
@@ -54,9 +56,9 @@ export function PostsContextProvider(props) {
       {
         method: "DELETE",
       }
-    ).then(()=>{
+    ).then(() => {
       notificationStateHandler(false);
-      setMsg("Post Deleted");
+      setMsg(t("alert-delete"));
     });
   }
 
@@ -74,9 +76,9 @@ export function PostsContextProvider(props) {
           ContentType: "application/json",
         },
       }
-    ).then(()=>{
+    ).then(() => {
       notificationStateHandler(false);
-      setMsg('Post Edited');
+      setMsg(t("alert-edit"));
     });
   }
 

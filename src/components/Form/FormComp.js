@@ -2,12 +2,15 @@ import { useState, useContext, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import PostsContext from "../../store/PostsContext";
 import FormError from "../form-error/FormError";
+import { useTranslation } from "react-i18next";
 import "./Form.css";
 
 function FormComp() {
   const postsContext = useContext(PostsContext);
   const [hideErrorMsg, setHideErrorMsg] = useState(true);
   const [validForm, setValidForm] = useState(false);
+
+  const { t, i18n } = useTranslation();
 
   const [
     {
@@ -81,20 +84,20 @@ function FormComp() {
 
   return (
     <div className="bgd">
-      <h2 className="form-title">Add new Post</h2>
+      <h2 className="form-title">{t("form-title")}</h2>
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="formGroupTitle">
           <Row>
             <Col>
               <Form.Control
                 type="text"
-                placeholder="Title"
+                placeholder={t("form-field-title")}
                 value={title}
                 name="title"
                 onChange={handleTextFieldChange}
                 onBlur={handleTextFieldBlur}
               />
-              {titleError && <span>Title is required</span>}
+              {titleError && <span>{t("form-error-title")}</span>}
             </Col>
             <Col xs={3}>
               <Form.Select
@@ -104,11 +107,13 @@ function FormComp() {
                 onChange={handleTextFieldChange}
                 onBlur={handleTextFieldBlur}
               >
-                <option value="">Select the location</option>
-                <option value="carousel">Carousel</option>
-                <option value="main">Main</option>
+                <option value="">{t("form-field-location")}</option>
+                <option value="carousel">
+                  {t("form-field-location-carousel")}
+                </option>
+                <option value="main">{t("form-field-location-main")}</option>
               </Form.Select>
-              {locationError && <span>Select a location</span>}
+              {locationError && <span>{t("form-error-location")}</span>}
             </Col>
           </Row>
         </Form.Group>
@@ -116,32 +121,32 @@ function FormComp() {
         <Form.Group className="mb-3" controlId="formGroupImage">
           <Form.Control
             type="text"
-            placeholder="Image URL"
+            placeholder={t("form-field-image")}
             value={image}
             name="image"
             onChange={handleTextFieldChange}
             onBlur={handleTextFieldBlur}
           />
-          {imageError && <span>Image URL is required</span>}
+          {imageError && <span>{t("form-error-image")}</span>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formGroupText">
           <Form.Control
             as="textarea"
-            placeholder="Text"
+            placeholder={t("form-field-text")}
             value={text}
             name="text"
             onChange={handleTextFieldChange}
             onBlur={handleTextFieldBlur}
             rows={4}
           />
-          {textError && <span>Text is required</span>}
+          {textError && <span>{t("form-error-text")}</span>}
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit
+          {t("form-button")}
         </Button>
       </Form>
-      {!hideErrorMsg && <FormError msg="All fields are required" />}
+      {!hideErrorMsg && <FormError msg={t("form-alert-error")} />}
     </div>
   );
 }

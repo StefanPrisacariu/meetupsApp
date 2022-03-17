@@ -1,10 +1,14 @@
 import { useState, useContext } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import "./Overlay.css";
 import PostsContext from "../../store/PostsContext";
+import { useDetectClickOutside } from "react-detect-click-outside";
 
 function Overlay({ elem, elemId, toggleOverlay, action }) {
   const replaceContext = useContext(PostsContext);
+
+  const { t, i18n } = useTranslation();
 
   const [{ title, image, text, location }, setState] = useState({
     title: elem.title,
@@ -39,15 +43,7 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
       });
   }
 
-  const outsideCLick = document.querySelector('.container');
-
-  document.addEventListener('mousedown',(e) => {
-    if (outsideCLick.contains(e.target)){
-      
-    } else {
-      toggleOverlay();
-    }
-  })
+  const ref=useDetectClickOutside({onTriggered: toggleOverlay});
 
   return (
     <>
@@ -55,10 +51,8 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
       {action === "delete" && (
         <div className="darkened">
           <div className="check-box">
-            <div className="container">
-              <h2 className="overlay-title">
-                Are you sure you want to delete this post?
-              </h2>
+            <div className="container" ref={ref}>
+              <h2 className="overlay-title">{t("overlay-delete-title")}</h2>
               <div className="buttons">
                 <Button
                   variant="outline-danger"
@@ -67,10 +61,10 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
                     toggleOverlay();
                   }}
                 >
-                  Delete
+                  {t("overlay-delete-yes")}
                 </Button>
                 <Button variant="outline-primary" onClick={toggleOverlay}>
-                  Cancel
+                  {t("overlay-delete-no")}
                 </Button>
               </div>
             </div>
@@ -82,13 +76,13 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
       {action === "edit" && (
         <div className="darkened">
           <div className="edit-box">
-            <div className="container">
+            <div className="container" ref={ref}>
               <Form className="editor">
-                <h2 className="editor-title">Edit Post</h2>
+                <h2 className="editor-title">{t("overlay-edit")}</h2>
                 <Form.Group className="mb-3" controlId="formGroupTitle">
                   <Row>
                     <Col>
-                      <Form.Label>Title</Form.Label>
+                      <Form.Label>{t("form-field-title")}</Form.Label>
                       <Form.Control
                         type="text"
                         className="editor-field"
@@ -98,7 +92,7 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
                       />
                     </Col>
                     <Col>
-                      <Form.Label>Location</Form.Label>
+                      <Form.Label>{t("form-field-location")}</Form.Label>
                       <Form.Select
                         as="location"
                         aria-label="Select the location"
@@ -108,15 +102,19 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
                         {elem.location === "carousel" ? (
                           <>
                             <option selected value="carousel">
-                              Carousel
+                              {t("form-field-location-carousel")}
                             </option>
-                            <option value="main">Main</option>
+                            <option value="main">
+                              {t("form-field-location-main")}
+                            </option>
                           </>
                         ) : (
                           <>
-                            <option value="carousel">Carousel</option>
+                            <option value="carousel">
+                              {t("form-field-location-carousel")}
+                            </option>
                             <option selected value="main">
-                              Main
+                              {t("form-field-location-main")}
                             </option>
                           </>
                         )}
@@ -126,7 +124,7 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGroupImageURL">
-                  <Form.Label>Title</Form.Label>
+                  <Form.Label>{t("form-field-image")}</Form.Label>
                   <Form.Control
                     type="text"
                     className="editor-field"
@@ -137,7 +135,7 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGroupText">
-                  <Form.Label>Title</Form.Label>
+                  <Form.Label>{t("form-field-text")}</Form.Label>
                   <Form.Control
                     as="textarea"
                     className="editor-field"
@@ -149,10 +147,10 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
               </Form>
               <div className="buttons">
                 <Button variant="outline-success" onClick={editCurrentPost}>
-                  Save Changes
+                  {t("overlay-edit-save")}
                 </Button>
                 <Button variant="outline-primary" onClick={toggleOverlay}>
-                  Cancel
+                  {t("overlay-edit-cancel")}
                 </Button>
               </div>
             </div>
