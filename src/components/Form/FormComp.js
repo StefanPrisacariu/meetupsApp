@@ -10,7 +10,7 @@ function FormComp() {
   const [hideErrorMsg, setHideErrorMsg] = useState(true);
   const [validForm, setValidForm] = useState(false);
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [
     {
@@ -34,6 +34,8 @@ function FormComp() {
     textError: "",
     locationError: "",
   });
+
+  var date=new Date().toLocaleDateString();
 
   useEffect(() => {
     if (title === "" || image === "" || text === "" || location === "") {
@@ -67,6 +69,7 @@ function FormComp() {
         image: image,
         text: text,
         location: location,
+        date: date,
       };
 
       postsContext.addPost(postData);

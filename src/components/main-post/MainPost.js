@@ -13,6 +13,7 @@ function MainPost(props) {
             image={post.image}
             title={post.title}
             text={post.text}
+            date={post.date}
           />
         ))}
     </>

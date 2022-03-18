@@ -5,9 +5,3 @@
     flex-wrap: wrap;
     margin: 0 auto;
 }
-
-.counter{
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-}

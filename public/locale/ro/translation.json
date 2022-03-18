@@ -1,0 +1,42 @@
+{
+  "header-title": "Blog Personal",
+  "header-language": "Selectează Limba",
+  "header-language-ro": "  Română",
+  "header-language-en": "  Engleză",
+
+  "nav-brand": "BP",
+  "nav-home": "Acasă",
+  "nav-page-1": "Pagina 1",
+  "nav-page-2": "Pagina 2",
+  "nav-page-3": "Pagina 3",
+  "nav-page-4": "Pagina 4",
+
+  "main-no-post": "Încă nu ai nici o postare. Încearcă să adaugi câteva",
+
+  "form-title": "Adaugă o nouă postare",
+  "form-field-title": "Titlu",
+  "form-field-location": "Selectează Locația",
+  "form-field-location-carousel": "Carusel",
+  "form-field-location-main": "Principal",
+  "form-field-image": "URL Imagine",
+  "form-field-text": "Text",
+  "form-button": "Confirmă",
+
+  "form-error-title": "Titlul este obligatoriu",
+  "form-error-location": "Selectează o locație",
+  "form-error-image": "URL-ul către imagine este obligatoriu",
+  "form-error-text": "Textul este obligatoriu",
+  "form-alert-error": "Toate câmpurile sunt obligatorii",
+
+  "alert-create": "Postare Creată",
+  "alert-delete": "Postare Ștearsă",
+  "alert-edit": "Postare Modificată",
+
+  "overlay-delete-title": "Ești sigur că vrei să ștergi această postare?",
+  "overlay-delete-yes": "Șterge",
+  "overlay-delete-no": "Anulare",
+
+  "overlay-edit": "Modificare Postare",
+  "overlay-edit-save": "Salvează Morificările",
+  "overlay-edit-cancel": "Anulare"
+}

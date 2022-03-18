@@ -7,3 +7,8 @@
 .navbar-collapse {
   justify-content: center;
 }
+
+.counter{
+  position: absolute;
+  right: 0;
+}

@@ -15,7 +15,7 @@ export function PostsContextProvider(props) {
   const [posts, setPosts] = useState([]);
   const [hideNotif, setHideNotif] = useState(true);
   const [msg, setMsg] = useState("");
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetch("https://cosplaybyheart-default-rtdb.firebaseio.com/posts.json")

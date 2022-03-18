@@ -29,6 +29,10 @@
   margin: 10px;
 }
 
+.card-date{
+  margin: 5px;
+}
+
 .delete {
   padding: 0;
   z-index: 5000;

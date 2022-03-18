@@ -8,13 +8,14 @@ import { useDetectClickOutside } from "react-detect-click-outside";
 function Overlay({ elem, elemId, toggleOverlay, action }) {
   const replaceContext = useContext(PostsContext);
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
-  const [{ title, image, text, location }, setState] = useState({
+  const [{ title, image, text, location ,date }, setState] = useState({
     title: elem.title,
     image: elem.image,
     text: elem.text,
     location: elem.location,
+    date: elem.date
   });
 
   function handleTextFieldChange({ target: { name, value } }) {
@@ -26,11 +27,18 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
     const newImage = image;
     const newText = text;
     const newLocation = location;
+    let newDate;
+
+    if(date === undefined || date === null){
+      newDate = new Date().toLocaleDateString();
+    }
+
     const embed = {
       title: newTitle,
       image: newImage,
       text: newText,
       location: newLocation,
+      date: newDate,
     };
 
     replaceContext

@@ -62,6 +62,7 @@ function MainPostItem(props) {
             <Card.Text className="mb-2 text-muted">{props.text}</Card.Text>
           </Card.Body>
         </div>
+        <small className="text-muted card-date">{props.date}</small>
       </Card>
       {hideOverlay === false && (
         <Overlay

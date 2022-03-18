@@ -9,9 +9,8 @@ function ComponentCarousel() {
   const [hideOverlay, setHideOverlay] = useState(true);
   const [hideEdit, setHideEdit] = useState(true);
   const [hideButtons, setHideButtons] = useState(true);
-  const [postId, setPostId] = useState('');
+  const [postId, setPostId] = useState("");
   const [postElem, setPostElem] = useState();
- 
 
   return (
     <div className="carousel">
@@ -30,7 +29,10 @@ function ComponentCarousel() {
                     className="deleteCarousel"
                     variant="danger"
                     style={{ padding: 0 }}
-                    onMouseOver={() => {setPostId(post.id);setPostElem(post)}}
+                    onMouseOver={() => {
+                      setPostId(post.id);
+                      setPostElem(post);
+                    }}
                     onClick={() => {
                       setHideOverlay(!hideOverlay);
                     }}
@@ -44,8 +46,10 @@ function ComponentCarousel() {
                     className="editCarousel"
                     variant="success"
                     style={{ padding: 0 }}
-                    onMouseOver={() => {setPostId(post.id);
-                    setPostElem(post);}}
+                    onMouseOver={() => {
+                      setPostId(post.id);
+                      setPostElem(post);
+                    }}
                     onClick={() => {
                       setHideEdit(!hideEdit);
                     }}
@@ -70,6 +74,7 @@ function ComponentCarousel() {
               <Carousel.Caption className="carousel-captions">
                 <h3>{post.title}</h3>
                 <p>{post.text}</p>
+                <p>{post.date}</p>
               </Carousel.Caption>
             </Carousel.Item>
           ))}
