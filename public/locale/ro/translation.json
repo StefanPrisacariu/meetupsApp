@@ -38,5 +38,14 @@
 
   "overlay-edit": "Modificare Postare",
   "overlay-edit-save": "Salvează Morificările",
-  "overlay-edit-cancel": "Anulare"
+  "overlay-edit-cancel": "Anulare",
+
+  "accordion-title-1": "Obiect Acordeon nr.1",
+  "accordion-title-2": "Obiect Acordeon nr.2",
+
+  "sidebar-title": "Bară Laterală Ascunsă",
+  "sidebar-button": "Lansează Bara Laterală",
+  "sidebar-content": "Text exemplu pentru bara ascunsă: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+
+  "progress-complete": "Complet!"
 }

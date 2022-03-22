@@ -8,7 +8,7 @@ import { useDetectClickOutside } from "react-detect-click-outside";
 function Overlay({ elem, elemId, toggleOverlay, action }) {
   const replaceContext = useContext(PostsContext);
 
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
   const [{ title, image, text, location ,date }, setState] = useState({
     title: elem.title,
@@ -22,6 +22,7 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
     setState((prevState) => ({ ...prevState, [name]: value }));
   }
 
+  
   function editCurrentPost() {
     const newTitle = title;
     const newImage = image;

@@ -38,5 +38,14 @@
 
   "overlay-edit": "Edit Post",
   "overlay-edit-save": "Save Changes",
-  "overlay-edit-cancel": "Cancel"
+  "overlay-edit-cancel": "Cancel",
+
+  "accordion-title-1": "Accordion Item nr.1",
+  "accordion-title-2": "Accordion Item nr.2",
+
+  "sidebar-title": "Hidden Sidebar",
+  "sidebar-button": "Launch Sidebar",
+  "sidebar-content": "Example text for the hidden sidebar: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+
+  "progress-complete":"Complete!"
 }
