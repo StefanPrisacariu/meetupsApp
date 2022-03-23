@@ -12,3 +12,10 @@
   position: absolute;
   right: 0;
 }
+
+@media only screen and (max-width: 991px){
+  .counter{
+    right: unset;
+    left: 40%;
+  }
+}

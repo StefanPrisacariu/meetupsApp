@@ -58,7 +58,7 @@ function Navigation(props) {
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
-          <Navbar.Brand href="/" className="text-light counter">
+          <Navbar.Brand disabled className="text-light counter">
             {t("form-field-location-carousel")}: {countCar} |{" "}
             {t("form-field-location-main")}: {countMain}
           </Navbar.Brand>
