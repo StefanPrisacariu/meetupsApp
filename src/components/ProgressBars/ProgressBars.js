@@ -36,13 +36,13 @@ function ProgressBars() {
             variant="warning"
             now={now2}
             label={`${now2}%`}
-            key={2}
+            key={1}
           />
           <ProgressBar
             variant="success"
             now={now1}
             label={`${now1}%`}
-            key={1}
+            key={2}
           />
           <ProgressBar variant="danger" now={now3} label={`${now3}%`} key={3} />
         </ProgressBar>
