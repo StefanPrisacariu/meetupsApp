@@ -4,6 +4,8 @@ import PostsContext from "../../store/PostsContext";
 import FormError from "../form-error/FormError";
 import { useTranslation } from "react-i18next";
 import "./Form.css";
+import ReactDatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function FormComp() {
   const postsContext = useContext(PostsContext);
@@ -35,7 +37,9 @@ function FormComp() {
     locationError: "",
   });
 
-  var date=new Date().toLocaleDateString();
+  let today = new Date().toLocaleDateString();
+  let [date,setDate] = useState(today);
+
 
   useEffect(() => {
     if (title === "" || image === "" || text === "" || location === "") {
@@ -71,6 +75,7 @@ function FormComp() {
         location: location,
         date: date,
       };
+      console.log(date);
 
       postsContext.addPost(postData);
       setState({
@@ -122,15 +127,27 @@ function FormComp() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formGroupImage">
-          <Form.Control
-            type="text"
-            placeholder={t("form-field-image")}
-            value={image}
-            name="image"
-            onChange={handleTextFieldChange}
-            onBlur={handleTextFieldBlur}
-          />
-          {imageError && <span>{t("form-error-image")}</span>}
+          <Row>
+            <Col>
+              <Form.Control
+                type="text"
+                placeholder={t("form-field-image")}
+                value={image}
+                name="image"
+                onChange={handleTextFieldChange}
+                onBlur={handleTextFieldBlur}
+              />
+              {imageError && <span>{t("form-error-image")}</span>}
+            </Col>
+            <Col xs={3}>
+              <ReactDatePicker
+                className="form-control"
+                value={date}
+                name="date"
+                onChange={(date:Date) => setDate(date.toLocaleDateString())}
+              />
+            </Col>
+          </Row>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formGroupText">
