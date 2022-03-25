@@ -1,3 +1,12 @@
-ul{
+.main-posts{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pagination-elem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }

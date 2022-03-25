@@ -12,6 +12,8 @@
   "nav-page-4": "Page 4",
 
   "main-no-post": "You got no posts yet. Start adding some.",
+  "main-posts-onpage":"Nr. of posts per page: ",
+  "main-posts-all":"All",
 
   "form-title": "Add a new post",
   "form-field-title": "Title",

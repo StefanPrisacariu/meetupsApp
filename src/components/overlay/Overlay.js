@@ -4,22 +4,19 @@ import { useTranslation } from "react-i18next";
 import "./Overlay.css";
 import PostsContext from "../../store/PostsContext";
 import { useDetectClickOutside } from "react-detect-click-outside";
-import ReactDatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 function Overlay({ elem, elemId, toggleOverlay, action }) {
   const replaceContext = useContext(PostsContext);
 
   const { t } = useTranslation();
 
-  const [{ title, image, text, location }, setState] = useState({
+  const [{ title, image, text, location, date }, setState] = useState({
     title: elem.title,
     image: elem.image,
     text: elem.text,
     location: elem.location,
+    date: elem.date,
   });
-
-  const [date, setDate] = useState(elem.date);
 
   function handleTextFieldChange({ target: { name, value } }) {
     setState((prevState) => ({ ...prevState, [name]: value }));
@@ -141,22 +138,14 @@ function Overlay({ elem, elemId, toggleOverlay, action }) {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGroupImageURL">
-                  <Row>
-                    <Col>
-                      <Form.Label>{t("form-field-image")}</Form.Label>
-                      <Form.Control
-                        type="text"
-                        className="editor-field"
-                        defaultValue={elem.image}
-                        onChange={handleTextFieldChange}
-                        name="image"
-                      />
-                    </Col>
-                    <Col>
-                      <Form.Label>Date</Form.Label>
-                      {/* <ReactDatePicker/> */}
-                    </Col>
-                  </Row>
+                  <Form.Label>{t("form-field-image")}</Form.Label>
+                  <Form.Control
+                    type="text"
+                    className="editor-field"
+                    defaultValue={elem.image}
+                    onChange={handleTextFieldChange}
+                    name="image"
+                  />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGroupText">

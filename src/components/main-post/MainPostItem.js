@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import PostsContext from "../../store/PostsContext";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button} from "react-bootstrap";
 import "./MainPostItem.css";
 import Overlay from "../overlay/Overlay";
 
@@ -80,6 +80,7 @@ function MainPostItem(props) {
           action="edit"
         />
       )}
+
     </>
   );
 }
